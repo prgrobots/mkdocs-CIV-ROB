@@ -1,0 +1,26 @@
+mkdocs CIV ROB/
+├── mkdocs.yml          
+└── docs/
+	├── index.md
+	├── stylesheets/
+	│   └── custom.css
+	├── course-overview/
+	│   ├── revised-lap.md
+	│   ├── assessment.md
+	│   └── resources.md
+	├── sessions/
+	│   ├── session-01.md
+	│   ├── session-02.md
+	│   ├── session-03.md
+	│   ├── session-04.md
+	│   └── ... (all 18 sessions)
+	├── resources/
+	│   ├── downloads.md
+	│   ├── code-examples.md
+	│   └── external-links.md
+	├── reference/
+	│   ├── glossary.md
+	│   ├── api-reference.md
+	│   └── troubleshooting.md
+	└── files/
+	    └── (downloadable course materials)

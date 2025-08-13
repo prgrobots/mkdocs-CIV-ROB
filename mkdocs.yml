@@ -1,0 +1,179 @@
+site_name: Robotics Programming Course
+site_description: ICTPRG430 & ICTPRG439 - Object-Oriented Programming and Component Reuse
+site_author: Your Institution
+site_url: https://yoursite.com/robotics-course
+
+# Repository info (optional - for GitHub integration)
+repo_name: robotics-programming-course
+repo_url: https://github.com/yourusername/robotics-course
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2025 Your Institution
+
+# Configuration
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    # Light mode
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+
+# Plugins
+plugins:
+  - search:
+      lang: en
+  - glightbox:  # Image lightbox
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      width: 100%
+      height: auto
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      type: date
+      timezone: Australia/Perth
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: On this page
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Navigation structure
+nav:
+  - Home: index.md
+  - Course Overview:
+    - Learning & Assessment Plan: course-overview/revised-lap.md
+    - Assessment Information: course-overview/assessment.md
+    - Resources: course-overview/resources.md
+  - Phase 1 - Programming Fundamentals:
+    - Session 1: sessions/session-01.md
+    - Session 2: sessions/session-02.md
+    - Session 3: sessions/session-03.md
+  - Phase 2 - OOP Theory:
+    - Session 4: sessions/session-04.md
+    - Session 5: sessions/session-05.md
+    - Session 6: sessions/session-06.md
+    - Session 7: sessions/session-07.md
+  - Phase 3 - Applied OOP Robotics:
+    - Session 8: sessions/session-08.md
+    - Session 9: sessions/session-09.md
+    - Session 10: sessions/session-10.md
+    - Session 11: sessions/session-11.md
+    - Session 12: sessions/session-12.md
+  - Phase 4 - Component Research:
+    - Session 13: sessions/session-13.md
+    - Session 14: sessions/session-14.md
+    - Session 15: sessions/session-15.md
+  - Phase 5 - Integration:
+    - Session 16: sessions/session-16.md
+    - Session 17: sessions/session-17.md
+  - Phase 6 - Assessment:
+    - Session 18: sessions/session-18.md
+  - Resources:
+    - Downloads: resources/downloads.md
+    - Code Examples: resources/code-examples.md
+    - External Links: resources/external-links.md
+  - Reference:
+    - Glossary: reference/glossary.md
+    - API Reference: reference/api-reference.md
+    - Troubleshooting: reference/troubleshooting.md
+
+# Extra CSS and JS
+extra_css:
+  - stylesheets/custom.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Footer social links
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/yourusername
+  version:
+    provider: mike
