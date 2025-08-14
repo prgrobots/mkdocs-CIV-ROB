@@ -1,8 +1,9 @@
 # Session 4: Object Model & Class Fundamentals
 
+**Week:** 4  
 **Element:** ICTPRG430 Element 2.1  
 **Duration:** 4 hours  
-**Phase:** 2 - Object-Oriented Programming Theory
+**Phase:** Object-Oriented Programming Theory
 
 ---
 
@@ -28,7 +29,7 @@ This session introduces the fundamental concepts of Object-Oriented Programming 
     
     - OOP programming fundamentals documentation
     - Class design principles guide
-    - [Download: Basic Robot Class Starter](../../resources/downloads.md#phase-2-oop-theory)
+    - [Download: Basic Robot Class Starter](../downloads.md#week-4-object-model--class-fundamentals)
 
 !!! tip "Setup Check"
     Ensure your Python development environment is configured:
@@ -365,7 +366,7 @@ Upload to your portfolio:
 
 ## Next Session Preview
 
-**Session 5: Advanced Class Features & Magic Methods**
+**Week 5: Advanced Class Features & Magic Methods**
 
 - Python magic methods (`__str__`, `__repr__`, `__eq__`)
 - Property decorators and getters/setters
@@ -377,9 +378,9 @@ Upload to your portfolio:
 ## Resources
 
 ### Downloads
-- [:material-download: Class implementation examples](../../resources/downloads.md)
-- [:material-download: Unit test templates](../../resources/downloads.md)
-- [:material-download: Robot class starter code](../../resources/downloads.md)
+- [:material-download: Class implementation examples](../downloads.md)
+- [:material-download: Unit test templates](../downloads.md)
+- [:material-download: Robot class starter code](../downloads.md)
 
 ### Further Reading
 - Python Classes Documentation
@@ -389,4 +390,4 @@ Upload to your portfolio:
 ---
 
 **Navigation:**  
-[← Session 3](../phase1/session-03.md) | [Course Overview](../../course-overview/revised-lap.md) | [Session 5 →](session-05.md)
+[← Week 3](session-03.md) | [Learning Plan](../revised-lap.md) | [Week 5 →](session-05.md)

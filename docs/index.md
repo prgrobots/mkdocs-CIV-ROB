@@ -12,35 +12,100 @@ Welcome to the **Robotics Programming Course** covering ICTPRG430 (Apply introdu
 
 ## Quick Navigation
 
-### Course Structure
-- **[Learning & Assessment Plan](course-overview/revised-lap.md)** - Complete course schedule and requirements
-- **[Assessment Information](course-overview/assessment.md)** - Portfolio requirements and submission details
-- **[Resources](course-overview/resources.md)** - Essential tools and materials
+### Course Information
+- **[Learning & Assessment Plan](revised-lap.md)** - Complete 18-week course schedule
+- **[Downloads & Resources](downloads.md)** - Essential files and materials
+- **[Assessment Information](assessment.md)** - Portfolio requirements
+- **[Course Glossary](glossary.md)** - Key terms and definitions
 
-### Learning Phases
+### Weekly Sessions
 
-=== "Phase 1: Programming Fundamentals"
+=== "Weeks 1-3: Programming Fundamentals"
     
-    **Sessions 1-3** - Building strong testing and debugging foundations
+    **Building strong testing and debugging foundations**
     
-    - [Session 1](sessions/phase1/session-01.md): Unit Testing Foundations & Binary Search
-    - [Session 2](sessions/phase1/session-02.md): Advanced Testing & Algorithmic Challenges  
-    - [Session 3](sessions/phase1/session-03.md): Professional Testing & Development Environment
+    - [Week 1](sessions/session-01.md): Unit Testing Foundations & Binary Search
+    - [Week 2](sessions/session-02.md): Advanced Testing & Algorithmic Challenges  
+    - [Week 3](sessions/session-03.md): Professional Testing & Development Environment
 
-=== "Phase 2: OOP Theory"
+=== "Weeks 4-7: OOP Theory"
     
-    **Sessions 4-7** - Mastering object-oriented programming concepts
+    **Mastering object-oriented programming concepts**
     
-    - [Session 4](sessions/phase2/session-04.md): Object Model & Class Fundamentals
-    - [Session 5](sessions/phase2/session-05.md): Advanced Class Features & Magic Methods
-    - [Session 6](sessions/phase2/session-06.md): Inheritance & Polymorphism Mastery
-    - [Session 7](sessions/phase2/session-07.md): File I/O & Documentation Standards
+    - [Week 4](sessions/session-04.md): Object Model & Class Fundamentals
+    - [Week 5](sessions/session-05.md): Advanced Class Features & Magic Methods
+    - [Week 6](sessions/session-06.md): Inheritance & Polymorphism Mastery
+    - [Week 7](sessions/session-07.md): File I/O & Documentation Standards
 
-=== "Phase 3: Applied OOP Robotics"
+=== "Weeks 8-12: Applied OOP Robotics"
     
-    **Sessions 8-12** - Implementing OOP principles in robotics projects
+    **Implementing OOP principles in robotics projects**
     
-    - [Session 8](sessions/phase3/session-08.md): Felipe Lab 1 OOP Refactoring
+    - [Week 8](sessions/session-08.md): Felipe Lab 1 OOP Refactoring
+    - [Week 9](sessions/session-09.md): Felipe Lab 2 OOP Implementation
+    - [Week 10](sessions/session-10.md): Felipe Lab 3 OOP Navigation
+    - [Week 11](sessions/session-11.md): Felipe Lab 4 OOP Control Systems
+    - [Week 12](sessions/session-12.md): Felipe Lab 5 OOP Mission Integration
+
+=== "Weeks 13-15: Component Research"
+    
+    **Analyzing and selecting pre-existing components**
+    
+    - [Week 13](sessions/session-13.md): ROS Component Analysis & Research
+    - [Week 14](sessions/session-14.md): Component Evaluation & Selection
+    - [Week 15](sessions/session-15.md): Integration Planning & Environment Setup
+
+=== "Weeks 16-18: Integration & Assessment"
+    
+    **Component integration and final assessment**
+    
+    - [Week 16](sessions/session-16.md): ROS Component Integration - Line Follower
+    - [Week 17](sessions/session-17.md): System Assembly & Documentation
+    - [Week 18](sessions/session-18.md): Portfolio Review & Competency Validation
+
+## Key Resources
+
+!!! info "Essential Downloads"
+    Visit the [Downloads](downloads.md) page for:
+    
+    - Development environment setup files
+    - Project templates and starter code
+    - Assessment rubrics and submission templates
+    - Lab exercise materials
+
+!!! tip "Getting Started"
+    1. Review the [Learning & Assessment Plan](revised-lap.md)
+    2. Set up your development environment using materials from [Downloads](downloads.md)
+    3. Check the [Glossary](glossary.md) for key terminology
+    4. Begin with [Week 1](sessions/session-01.md)
+
+## Assessment Portfolio
+
+Your competency will be demonstrated through two main portfolio components:
+
+- **Portfolio 1:** OOP Fundamentals and Applied Robotics (Weeks 1-12)
+- **Portfolio 2:** Component Integration (Weeks 13-17)
+
+Each portfolio includes both theoretical understanding and practical implementation tasks.
+
+## Current Week Navigation
+
+!!! note "Quick Week Access"
+    Jump directly to any week:
+    
+    **Fundamentals:** [Week 1](sessions/session-01.md) | [Week 2](sessions/session-02.md) | [Week 3](sessions/session-03.md)
+    
+    **OOP Theory:** [Week 4](sessions/session-04.md) | [Week 5](sessions/session-05.md) | [Week 6](sessions/session-06.md) | [Week 7](sessions/session-07.md)
+    
+    **Applied Robotics:** [Week 8](sessions/session-08.md) | [Week 9](sessions/session-09.md) | [Week 10](sessions/session-10.md) | [Week 11](sessions/session-11.md) | [Week 12](sessions/session-12.md)
+    
+    **Components:** [Week 13](sessions/session-13.md) | [Week 14](sessions/session-14.md) | [Week 15](sessions/session-15.md)
+    
+    **Integration:** [Week 16](sessions/session-16.md) | [Week 17](sessions/session-17.md) | [Week 18](sessions/session-18.md)
+
+---
+
+*Ready to begin? Start with the [Learning & Assessment Plan](revised-lap.md) or jump directly to [Week 1](sessions/session-01.md).*
     - [Session 9](sessions/phase3/session-09.md): Felipe Lab 2 OOP Implementation
     - [Session 10](sessions/phase3/session-10.md): Felipe Lab 3 OOP Navigation
     - [Session 11](sessions/phase3/session-11.md): Felipe Lab 4 OOP Control Systems

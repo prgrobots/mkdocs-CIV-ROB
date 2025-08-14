@@ -122,42 +122,81 @@ markdown_extensions:
 # Navigation structure
 nav:
   - Home: index.md
-  - Course Overview:
-    - Learning & Assessment Plan: course-overview/revised-lap.md
-    - Assessment Information: course-overview/assessment.md
-    - Resources: course-overview/resources.md
-  - Phase 1 - Programming Fundamentals:
+  - Learning & Assessment Plan: revised-lap.md
+  - Week 1 - Unit Testing & Binary Search:
     - Session 1: sessions/session-01.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 2 - Advanced Testing & Algorithms:
     - Session 2: sessions/session-02.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 3 - Professional Testing Environment:
     - Session 3: sessions/session-03.md
-  - Phase 2 - OOP Theory:
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 4 - Object Model & Class Fundamentals:
     - Session 4: sessions/session-04.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 5 - Advanced Class Features:
     - Session 5: sessions/session-05.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 6 - Inheritance & Polymorphism:
     - Session 6: sessions/session-06.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 7 - File I/O & Documentation:
     - Session 7: sessions/session-07.md
-  - Phase 3 - Applied OOP Robotics:
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 8 - Felipe Lab 1 OOP Refactoring:
     - Session 8: sessions/session-08.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 9 - Felipe Lab 2 OOP Implementation:
     - Session 9: sessions/session-09.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 10 - Felipe Lab 3 OOP Navigation:
     - Session 10: sessions/session-10.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 11 - Felipe Lab 4 OOP Control Systems:
     - Session 11: sessions/session-11.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 12 - Felipe Lab 5 OOP Mission Integration:
     - Session 12: sessions/session-12.md
-  - Phase 4 - Component Research:
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 13 - ROS Component Analysis:
     - Session 13: sessions/session-13.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 14 - Component Evaluation:
     - Session 14: sessions/session-14.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 15 - Integration Planning:
     - Session 15: sessions/session-15.md
-  - Phase 5 - Integration:
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 16 - ROS Component Integration:
     - Session 16: sessions/session-16.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 17 - System Assembly & Documentation:
     - Session 17: sessions/session-17.md
-  - Phase 6 - Assessment:
+    - Resources: downloads.md
+    - Assessment: assessment.md
+  - Week 18 - Portfolio Review:
     - Session 18: sessions/session-18.md
-  - Resources:
-    - Downloads: resources/downloads.md
-    - Code Examples: resources/code-examples.md
-    - External Links: resources/external-links.md
+    - Resources: downloads.md
+    - Assessment: assessment.md
   - Reference:
-    - Glossary: reference/glossary.md
-    - API Reference: reference/api-reference.md
-    - Troubleshooting: reference/troubleshooting.md
+    - Glossary: glossary.md
 
 # Extra CSS and JS
 extra_css:
