@@ -136,6 +136,21 @@ Object-Oriented Programming was developed to manage the increasing complexity of
 
 ### Practical Example: Robot LED System
 
+#### RobotLED Class UML Structure
+
+```mermaid
+classDiagram
+    class RobotLED {
+        -str led_id
+        -bool is_on
+        +__init__(led_id: str) RobotLED
+        +turn_on() void
+        +turn_off() void
+    }
+    
+    note for RobotLED "Encapsulates LED state and provides\ncontrol methods for individual LEDs"
+```
+
 Let's compare procedural vs object-oriented approaches:
 
 === "Procedural Approach"
@@ -220,6 +235,24 @@ robot = EPuckRobot("Alpha_7", 98.5)
 The `__init__` method is your constructor - it defines how objects are created and initialized.
 
 ### Constructor Best Practices
+
+#### EPuckRobot Class UML Structure
+
+```mermaid
+classDiagram
+    class EPuckRobot {
+        -str robot_id
+        -float battery_percentage
+        -float current_speed
+        -bool is_moving
+        +__init__(robot_id: str, initial_battery_percentage: float) EPuckRobot
+        +move_forward(speed: float) void
+        +stop() void
+        +report_status() str
+    }
+    
+    note for EPuckRobot "Main robot class managing movement,\nbattery status, and robot identification"
+```
 
 ```python
 class EPuckRobot:
@@ -306,6 +339,19 @@ class EPuckRobot:
 In this practical activity, you will write a Python class that simulates infrared (IR) distance sensors commonly found on robots like the e-puck.
 
 ### Task: Create and Use a Mock IR Sensor Class
+
+#### IRSensor Class UML Structure
+
+```mermaid
+classDiagram
+    class IRSensor {
+        -str name
+        +__init__(name: str) IRSensor
+        +get_reading() int
+    }
+    
+    note for IRSensor "Simulates infrared distance sensor\nreturning readings in centimeters (1-100)"
+```
 
 You will create **five separate sensor objects** for different positions on the robot:
 
@@ -430,6 +476,21 @@ if __name__ == "__main__":
 - Good for stateless operations
 
 ### 3. Object-Oriented Approach
+
+#### Lidar Class UML Structure
+
+```mermaid
+classDiagram
+    class Lidar {
+        -int num_measurements
+        +__init__(num_measurements: int) Lidar
+        +get_measurement() int
+        +scan() list~int~
+        +get_status() str
+    }
+    
+    note for Lidar "Advanced sensor simulation with\nconfigurable measurement points (default: 36)"
+```
 
 Using classes to create reusable, stateful components:
 
@@ -733,6 +794,84 @@ After completing these steps, you should have:
 
 ---
 
+## Session Summary: Class Relationships Overview
+
+Here's a comprehensive overview of all the classes we've implemented in this session:
+
+```mermaid
+classDiagram
+    class RobotLED {
+        +str led_id
+        +bool is_on
+        +__init__(led_id: str)
+        +turn_on()
+        +turn_off()
+    }
+    
+    class EPuckRobot {
+        +str robot_id
+        +float battery_percentage
+        +float current_speed
+        +bool is_moving
+        +__init__(robot_id: str, initial_battery_percentage: float)
+        +move_forward(speed: float)
+        +stop()
+        +report_status() str
+    }
+    
+    class IRSensor {
+        +str name
+        +__init__(name: str)
+        +get_reading() int
+    }
+    
+    class Lidar {
+        +int num_measurements
+        +__init__(num_measurements: int)
+        +get_measurement() int
+        +scan() list
+        +get_status() str
+    }
+    
+    note for RobotLED "Manages individual LED state\nand behavior"
+    note for EPuckRobot "Main robot controller with\nmovement and status tracking"
+    note for IRSensor "Simulates infrared distance\nsensor readings"
+    note for Lidar "Simulates LIDAR sensor with\nconfigurable measurements"
+```
+
+### Programming Paradigm Evolution
+
+The evolution from procedural to object-oriented programming can be visualized as:
+
+```mermaid
+flowchart TD
+    A[Procedural Approach] --> B["Global variables<br/>Separate functions<br/>Limited reusability"]
+    
+    C[Functional Approach] --> D["Pure functions<br/>Parameter passing<br/>Better organization"]
+    
+    E[Object-Oriented Approach] --> F["Encapsulated data<br/>Methods with data<br/>Reusable objects<br/>Scalable design"]
+    
+    B --> G["❌ Hard to maintain<br/>❌ Global state issues<br/>❌ No reusability"]
+    D --> H["✅ Better organization<br/>⚠️ Stateless only<br/>⚠️ Limited scalability"]
+    F --> I["✅ Highly maintainable<br/>✅ Reusable components<br/>✅ Scalable architecture<br/>✅ Perfect for robotics"]
+    
+    style A fill:#ffcccc
+    style C fill:#ffffcc
+    style E fill:#ccffcc
+    style G fill:#ffcccc
+    style H fill:#ffffcc
+    style I fill:#ccffcc
+```
+
+!!! tip "UML Diagram Benefits"
+    These UML diagrams help visualize:
+    - **Class structure**: Attributes and methods at a glance
+    - **Relationships**: How classes might interact in larger systems
+    - **Design patterns**: Common robotics software patterns
+    - **Scalability**: How to extend classes for more complex robots
+
+---
+
 ## Key Takeaways
 
 !!! success "Session Summary"
@@ -742,6 +881,73 @@ After completing these steps, you should have:
     - **Instance Variables**: Store unique object state
     - **Instance Methods**: Define object behaviors
     - **Constructor Design**: Proper `__init__` method implementation
+
+---
+
+## Check Your Knowledge
+
+Test your understanding of the Object-Oriented Programming concepts covered in this session:
+
+!!! question "Question 1: Class vs Object"
+    **Question**: What's the difference between a class and an object? Use the robot LED example to explain.
+    
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        - **Class**: A blueprint or template (like `RobotLED` class) that defines what all LED objects will have
+        - **Object**: An actual LED created from that blueprint (like `front_led` or `back_led`)
+        
+        Think of it like a cookie cutter (class) and the actual cookies (objects). You use one cookie cutter to make many different cookies, just like you use one `RobotLED` class to create many different LED objects.
+
+!!! question "Question 2: What does `self` mean?"
+    **Question**: In the method `def turn_on(self):`, what does the word `self` represent?
+    
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        `self` refers to the specific object that the method is being called on. 
+        
+        When you write `front_led.turn_on()`, inside the `turn_on()` method, `self` refers to the `front_led` object. This is how the method knows which LED to turn on - it's the one that called the method!
+
+!!! question "Question 3: Instance Variables vs Class Variables"
+    **Question**: Look at these two pieces of code. What's the difference?
+    
+    ```
+    Code A: self.led_id = "front"
+    Code B: led_count = 0
+    ```
+    
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        - **Code A (`self.led_id`)**: This is an **instance variable**. Each LED object has its own `led_id`. The front LED has `led_id = "front"` and the back LED has `led_id = "back"`.
+        
+        - **Code B (`led_count`)**: This is a **class variable**. There's only one `led_count` shared by all LED objects. If you wanted to count how many total LEDs exist, you'd use a class variable.
+        
+        **Key difference**: Instance variables are unique to each object, class variables are shared by all objects.
+
+!!! question "Question 4: Why use OOP for robots?"
+    **Question**: Name two main benefits of using object-oriented programming for robotics instead of just writing simple functions.
+    
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        1. **Organization**: Each robot component (LED, sensor, motor) can be its own class, making the code much more organized and easier to understand.
+        
+        2. **Reusability**: Once you write a `RobotLED` class, you can use it for any robot project. You don't have to rewrite LED control code every time.
+        
+        **Bonus**: **Independence** - Each object manages its own data, so turning on one LED won't accidentally affect another LED.
+
+!!! question "Question 5: Object Instantiation"
+    **Question**: When you write `my_led = RobotLED("status")`, what two things happen inside Python?
+    
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        1. **Memory allocation**: Python creates space in memory for the new LED object
+        2. **Initialization**: Python calls the `__init__` method to set up the object's initial values (like setting `led_id` to "status" and `is_on` to `False`)
+        
+        After these two steps, you have a fully working LED object stored in the variable `my_led`.
 
 ---
 

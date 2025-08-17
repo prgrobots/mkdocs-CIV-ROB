@@ -1,6 +1,8 @@
 # Session Template System
 
-This directory contains the template system for generating consistent course sessions based on the successful Session 4 structure.
+This directory contains the template system for generating consistent course sessions based on the successful Session 4 structure.  Some changes may be in the actual session_4.md that will be more current.
+
+Adapt requested session to the new content and ignore the template where necessary 
 
 ## 🎯 **Template Features**
 
@@ -64,9 +66,10 @@ The template follows the proven Session 4 structure:
 11. **Research Activities** - Out-of-class investigation topics
 12. **Lab Section** - Practical setup or enhancement work
 13. **Key Takeaways** - Summary of main concepts
-14. **Next Session Preview** - What's coming next
-15. **Resources** - Downloads and further reading
-16. **Navigation** - Links to previous/next sessions
+14.  **Knowledge Check** - Simple question with hidden answers.
+15. **Next Session Preview** - What's coming next
+16. **Resources** - Downloads and further reading
+17. **Navigation** - Links to previous/next sessions
 
 ## 🎨 **Customization**
 
@@ -95,7 +98,7 @@ Each session has 5 main components:
 - `{{COMPONENT_2_NAME}}` - Usually "Hands-on Exercise"  
 - `{{COMPONENT_3_NAME}}` - Usually "Live Demonstration"
 - `{{COMPONENT_4_NAME}}` - Usually "Extension Activity"
-- `{{COMPONENT_5_NAME}}` - Usually "Lab Setup/Enhancement"
+
 
 ## 🔧 **Advanced Usage**
 

@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Docs generator.md",
+                "file": "docs/sessions/session-04.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Docs generator"
+              "title": "session-04"
+            }
+          },
+          {
+            "id": "5dd0184898c0882b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/sessions/session-05.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "session-05"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -168,18 +183,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d64d5215716a79db",
+  "active": "5dd0184898c0882b",
   "lastOpenFiles": [
-    "Robotics-Simulation-Labs-main/Lab1/ReadMe.md",
-    "Docs generator.md",
+    "Robotics-Simulation-Labs-main/Lab2/ReadMe_lab2.md",
+    "docs/sessions/session-05.md",
+    "docs/sessions/session-04.md",
     "docs/templates/README.md",
+    "Docs generator.md",
+    "docs/downloads.md",
+    "docs/templates/session-template.md",
+    "Robotics-Simulation-Labs-main/Lab1/ReadMe.md",
     "configs/session_05_config.json",
     "configs",
     "scripts/generate_session.py",
     "scripts",
-    "docs/templates/session-template.md",
     "docs/templates",
-    "docs/downloads.md",
     "docs/files/lidar_oop_clean.py",
     "docs/files/lidar_functional_clean.py",
     "docs/files/lidar_procedural_clean.py",

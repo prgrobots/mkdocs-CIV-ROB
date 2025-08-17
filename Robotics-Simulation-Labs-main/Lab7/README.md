@@ -18,7 +18,7 @@ In this lab, we are going to use MicroPython to program an ESP32-based microcont
 ## Pre-requisites
 * You must have Webots R2023a (or newer) properly configured to work with Python (see [Lab 1](../Lab1/ReadMe.md)).
 * You must know how to create a robot controller in Python and how to run a simulation (see [Lab 1](../Lab1/ReadMe.md)). 
-* You must know how to [implement simple behaviors](https://github.com/felipenmartins/Mobile-Robot-Control/blob/main/robot_behaviors.ipynb), and a [state machine](../Lab2/ReadMe.md) to select the robot behavior. 
+* You must know how to [implement simple behaviors](https://github.com/felipenmartins/Mobile-Robot-Control/blob/main/robot_behaviors.ipynb), and a [state machine](ReadMe_lab2.md) to select the robot behavior. 
 * You must have a microcontroller board that can be programmed in MicroPython and can be connected to the computer via USB cable. The example code presented here was tested on a ESP32-based board. 
 
 A popular IDE to program your microcontroller in MicroPython is Thonny. The site [Random Nerd Tutorials](https://randomnerdtutorials.com/getting-started-thonny-micropython-python-ide-esp32-esp8266/) provides instructions for installing Thonny IDE in Windows, Mac OS X, and Linux, flashing MicroPython software to your ESP32 board using Thonny IDE, writing and uploading code to your ESP32, and troubleshooting. 

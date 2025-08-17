@@ -244,6 +244,16 @@ To reinforce your understanding of the concepts covered in this session, researc
     - **{{TAKEAWAY_4}}**: {{TAKEAWAY_4_DESCRIPTION}}
 
 ---
+## Knollege Check
+
+!!! success "Simple questions - hidden(Admonitions) answers "
+    - **{{QUESTION_1}}**: {{QUESTION_1}}
+    -  **{{QUESTION_2}}**: {{QUESTION_2}}
+    - **{{QUESTION_3}}**: {{QUESTION_3}}
+
+
+---
+
 
 ## Next Session Preview
 
