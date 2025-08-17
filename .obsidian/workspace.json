@@ -1,0 +1,192 @@
+{
+  "main": {
+    "id": "8ae112dc3f874d76",
+    "type": "split",
+    "children": [
+      {
+        "id": "268ae75f9eec8c46",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d64d5215716a79db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Docs generator.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Docs generator"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "db0ab92fb3ac0dba",
+    "type": "split",
+    "children": [
+      {
+        "id": "2535f27360da3511",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "84da7ef8235bce5b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "783e477cd922f8c0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ad9d3a901c9583ea",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f3ff6221dfa03e55",
+    "type": "split",
+    "children": [
+      {
+        "id": "2e38933174d5fa95",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4b84866b9668a028",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Docs generator.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Docs generator"
+            }
+          },
+          {
+            "id": "27f8eb00c9330c73",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Docs generator.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Docs generator"
+            }
+          },
+          {
+            "id": "33877418eedfb8a4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7c54509a6d531ec1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Docs generator.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Docs generator"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "d64d5215716a79db",
+  "lastOpenFiles": [
+    "Robotics-Simulation-Labs-main/Lab1/ReadMe.md",
+    "Docs generator.md",
+    "docs/templates/README.md",
+    "configs/session_05_config.json",
+    "configs",
+    "scripts/generate_session.py",
+    "scripts",
+    "docs/templates/session-template.md",
+    "docs/templates",
+    "docs/downloads.md",
+    "docs/files/lidar_oop_clean.py",
+    "docs/files/lidar_functional_clean.py",
+    "docs/files/lidar_procedural_clean.py",
+    "docs/files/class_implementation_examples.py",
+    "docs/files/unittest_template.py",
+    "docs/images/windows_path_variable_python.png",
+    "docs/images/windows_message.png",
+    "docs/images/Webots_screenshot.png"
+  ]
+}

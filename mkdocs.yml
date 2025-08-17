@@ -1,4 +1,4 @@
-site_name: Robotics Programming Course
+site_name: CIV Programming - Robotics
 site_description: ICTPRG430 & ICTPRG439 - Object-Oriented Programming and Component Reuse
 site_author: Your Institution
 site_url: https://yoursite.com/robotics-course
@@ -28,8 +28,8 @@ theme:
   palette:
     # Light mode
     - scheme: default
-      primary: blue
-      accent: blue
+      primary: red
+      accent: red
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -83,9 +83,12 @@ markdown_extensions:
   - def_list
   - footnotes
   - md_in_html
+  - mermaid2
+  - video
   - toc:
       permalink: true
       title: On this page
+      toc_depth: 2
   - tables
   - pymdownx.arithmatex:
       generic: true
@@ -137,6 +140,11 @@ nav:
     - Assessment: assessment.md
   - Week 4 - Object Model & Class Fundamentals:
     - Session 4: sessions/session-04.md
+    - Theory Session: 'sessions/session-04/#1-why-object-oriented-programming-for-robotics'
+    - Hands-on Exercise: 'sessions/session-04/#hands-on-exercise-mock-ir-sensor-class'
+    - Live Demonstration: 'sessions/session-04/#live-demonstration-lidar-implementation-across-programming-paradigms'
+    - Extension Activity: 'sessions/session-04/#extension-activity-advanced-lidar-data-filtering'
+    - Lab Setup: 'sessions/session-04/#lab-1-webots-robot-simulator-setup'
     - Resources: downloads.md
     - Assessment: assessment.md
   - Week 5 - Advanced Class Features:

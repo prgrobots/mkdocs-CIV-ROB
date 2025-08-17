@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Task – Filtering LIDAR Scan Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+            color: #222;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+        ul {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            list-style-type: none;
+        }
+        .pros { color: green; }
+        .cons { color: red; }
+    </style>
+</head>
+<body>
+
+<h1>Extension Task – Filtering LIDAR Scan Data</h1>
+
+<p>
+Your LIDAR class currently returns a full 360° scan with 36 measurements.  
+Sometimes you may only want part of the scan — for example, the front arc.  
+Below are three different design approaches to achieve this, with their pros and cons.
+</p>
+
+<h2>1. Add a <code>scan_filtered()</code> Method</h2>
+<pre><code>def scan_filtered(self, start=0, end=36):
+    """Return scan results between given indices."""
+    full_scan = self.scan()
+    return full_scan[start:end]
+</code></pre>
+
+<h3>Pros</h3>
+<ul>
+    <li class="pros">Keeps filtering logic inside the class (good encapsulation).</li>
+    <li class="pros">Easy to call: <code>lidar.scan_filtered(4, 20)</code>.</li>
+    <li class="pros">Can be extended later for angle-based filtering.</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+    <li class="cons">Adds an extra method that mostly wraps existing logic.</li>
+</ul>
+
+<h2>2. Add Optional Parameters to <code>scan()</code></h2>
+<pre><code>def scan(self, start=0, end=36):
+    return [self.get_measurement() for _ in range(self.num_measurements)][start:end]
+</code></pre>
+
+<h3>Pros</h3>
+<ul>
+    <li class="pros">No new method — extends the original one.</li>
+    <li class="pros">Introduces default parameters.</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+    <li class="cons">Mixes two responsibilities: generating data and filtering data.</li>
+</ul>
+
+<h2>3. Process After the Scan</h2>
+<pre><code>readings = lidar.scan()
+front_arc = readings[4:20]
+</code></pre>
+
+<h3>Pros</h3>
+<ul>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Task – Filtering LIDAR Scan Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+            color: #222;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+        ul {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            list-style-type: none;
+        }
+        .pros { color: green; }
+        .cons { color: red; }
+    </style>
+</head>
+<body>
+
+<h1>Extension Task – Filtering LIDAR Scan Data</h1>
+
+<p>
+Your LIDAR class currently returns a full 360° scan with 36 measurements.  
+Sometimes you may only want part of the scan — for example, the front arc.  
+Below are three different design approaches to achieve this, with their pros and cons.
+</p>
+
+<h2>1. Add a <code>scan_filtered()</code> Method</h2>
+<pre><code>def scan_filtered(self, start=0, end=36):
+    """Return scan results between given indices."""
+    full_scan = self.scan()
+    return full_scan[start:end]
+</code></pre>
+
+<h3>Pros</h3>
+<ul>
+    <li class="pros">Keeps filtering logic inside the class (good encapsulation).</li>
+    <li class="pros">Easy to call: <code>lidar.scan_filtered(4, 20)</code>.</li>
+    <li class="pros">Can be extended later for angle-based filtering.</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+    <li class="cons">Adds an extra method that mostly wraps existing logic.</li>
+</ul>
+
+<h2>2. Add Optional Parameters to <code>scan()</code></h2>
+<pre><code>def scan(self, start=0, end=36):
+    return [self.get_measurement() for _ in range(self.num_measurements)][start:end]
+</code></pre>
+
+<h3>Pros</h3>
+<ul>
+    <li class="pros">No new method — extends the original one.</li>
+    <li class="pros">Introduces default parameters.</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+    <li class="cons">Mixes two responsibilities: generating data and filtering data.</li>
+</ul>
+
+<h2>3. Process After the Scan</h2>
+<pre><code>readings = lidar.scan()
+front_arc = readings[4:20]
+</code></pre>
+
+<h3>Pros</h3>
+<ul>
+    <li class="pros">The main code becomes more readable.</li>
+    <li class="pros">Keeps <code>scan()</code> simple and single-purpose.</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+    <li class="cons">Filtering logic is done outside the class.</li>
+    <li class="cons">More code in the main</li>
+</ul>
+
+<h2>Recommendation</h2>
+<p>
+A good design follows the <strong>Single Responsibility Principle</strong>: one method should do one thing well.  
+The suggested approach is:
+</p>
+<ol>
+    <li>Keep <code>scan()</code> for the full 360° scan.</li>
+    <li>Filter with list slicing when needed.</li>
+    <li>If filtering becomes common, add a dedicated <code>scan_filtered()</code> method inside the class.</li>
+</ol>
+
+</body>
+</html>
+<li class="pros">Keeps <code>scan()</code> simple and single-purpose.</li>
+</ul>
+
+<h3>Cons</h3>
+<ul>
+    <li class="cons">Filtering logic is done outside the class.</li>
+</ul>
+
+<h2>Recommendation</h2>
+<p>
+A good design follows the <strong>Single Responsibility Principle</strong>: one method should do one thing well.  
+The suggested approach is:
+</p>
+<ol>
+    <li>Keep <code>scan()</code> for the full 360° scan.</li>
+    <li>Filter with list slicing when needed.</li>
+    <li>If filtering becomes common, add a dedicated <code>scan_filtered()</code> method inside the class.</li>
+</ol>
+
+</body>
+</html>

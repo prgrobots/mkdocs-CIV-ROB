@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Model & Class Fundamentals for Robotics</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 600;
+            background: linear-gradient(135deg, #0f0f0f, #0a0a0a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            color: #34495e;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        h3 {
+            color: #2980b9;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .learning-objectives {
+            background: linear-gradient(135deg, #f8f9ff, #e8ebff);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .learning-objectives h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+            padding-left: 5px;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            border: 1px solid #444;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            white-space: pre;
+        }
+
+        .code-block .comment {
+            color: #6a9955;
+        }
+
+        .code-block .keyword {
+            color: #569cd6;
+        }
+
+        .code-block .string {
+            color: #ce9178;
+        }
+
+        .code-block .function {
+            color: #dcdcaa;
+        }
+
+        .advantage-box {
+            background: linear-gradient(135deg, #e8f5e8, #d4f1d4);
+            border-left: 5px solid #27ae60;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(39, 174, 96, 0.1);
+        }
+
+        .limitation-box {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-left: 5px solid #e74c3c;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.1);
+        }
+
+        .key-concept {
+            background: linear-gradient(135deg, #fff9e6, #fff0cc);
+            border: 2px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.1);
+        }
+
+        .section-divider {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 40px 0;
+            border-radius: 2px;
+        }
+
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                width: 95%;
+            }
+            
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .code-block {
+                font-size: 12px;
+                padding: 15px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            body {
+                max-width: 1400px;
+                width: 85%;
+            }
+        }
+
+        @media (min-width: 1800px) {
+            body {
+                max-width: 1600px;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Session 4: Object Model & Class Fundamentals for Robotics</h1>
+        
+        <div class="learning-objectives">
+            <h3>Learning Objectives</h3>
+            <p>By the end of this session, you will be able to:</p>
+            <ul>
+                <li>Understand fundamental OOP concepts: classes, objects, and object instantiation</li>
+                <li>Implement states (using instance variables) and behaviors (using instance methods) for robot systems</li>
+                <li>Explain constructor design and instance variables</li>
+            </ul>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2>1. Why Object-Oriented Programming (OOP) for Robotics?</h2>
+        <p>Object-Oriented Programming (OOP) was developed to manage the increasing complexity of large software systems, where even small changes could cause widespread errors due to interconnected dependencies. Robotics, in particular, deals with highly intricate systems involving numerous sensors, actuators, and algorithms, making OOP an incredibly valuable paradigm for developing robust and maintainable robot software.</p>
+
+        <p>For the <span class="strong">GCTronic e-puck robot</span>, applying OOP principles offers several key advantages:</p>
+
+        <div class="advantage-box">
+            <ul>
+                <li><strong>Encapsulation:</strong> Imagine the e-puck's motors or distance sensors. You don't need to know the intricate internal wiring or low-level data formats to control them. OOP's encapsulation hides data and functionality, providing a clear interface (like a set_speed() method for a motor) that simplifies interaction and prevents unintended side effects, allowing you to focus on higher-level robot behaviors.</li>
+                
+                <li><strong>Modularity:</strong> Instead of a single, monolithic program, your e-puck's software can be composed of interacting "parts" – objects representing individual motors, proximity sensors, or navigation modules. This breaking down of a large program into smaller, manageable parts makes development, testing, and debugging significantly easier.</li>
+                
+                <li><strong>Reusability:</strong> Once you define a Motor class or a Sensor class, you can reuse it for every motor or sensor on your e-puck, or even across different robot platforms, saving development time and ensuring consistency.</li>
+                
+                <li><strong>Flexibility (Polymorphism & Inheritance):</strong> As you add new capabilities to your e-puck (e.g., different types of sensors or adapting to new environments), OOP allows for flexible adaptation of existing code. For example, a BaseSensor class can be inherited by ProximitySensor or LightSensor classes, all responding to a read_value() method (polymorphism).</li>
+            </ul>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2>2. Procedural vs. Object-Oriented Programming: A Comparison</h2>
+        <p>To understand the benefits of OOP, let's start with a simple example.</p>
+
+        <h3>Scenario: Controlling an e-puck's LED</h3>
+        <p>Imagine we want to control an LED on our e-puck robot. We want to turn it on and off.</p>
+
+        <h3>Procedural Approach:</h3>
+        <p>In procedural programming, we typically use functions (or procedures) and global variables to manage data and operations.</p>
+
+        <div class="code-block"><span class="comment"># Procedural_E_puck_LED.py</span>
+
+<span class="comment"># Global variable representing the LED state</span>
+<span class="comment"># This variable is accessible and modifiable from anywhere in the program.</span>
+e_puck_led_is_on = <span class="keyword">False</span>
+
+
+<span class="keyword">def</span> <span class="function">turn_led_on</span>():
+    <span class="string">"""Turns the e-puck LED on."""</span>
+    <span class="keyword">global</span> e_puck_led_is_on
+    e_puck_led_is_on = <span class="keyword">True</span>
+    <span class="function">print</span>(<span class="string">f"e-puck LED is now ON: {e_puck_led_is_on}"</span>)
+
+
+<span class="keyword">def</span> <span class="function">turn_led_off</span>():
+    <span class="string">"""Turns the e-puck LED off."""</span>
+    <span class="keyword">global</span> e_puck_led_is_on
+    e_puck_led_is_on = <span class="keyword">False</span>
+    <span class="function">print</span>(<span class="string">f"e-puck LED is now OFF: {e_puck_led_is_on}"</span>)
+
+
+<span class="comment"># Main program to test</span>
+<span class="function">print</span>(<span class="string">f"Initial LED state: {e_puck_led_is_on}"</span>)
+<span class="function">turn_led_on</span>()
+<span class="function">turn_led_off</span>()
+<span class="function">turn_led_on</span>()
+        </div>
+
+        <div class="limitation-box">
+            <h3>Limitations of the Procedural Approach:</h3>
+            <ul>
+                <li><strong>Global Variables:</strong> The e_puck_led_is_on variable is global. If you wanted to control multiple LEDs on different parts of the e-puck, or multiple e-puck robots, each with their own LEDs, this approach quickly becomes problematic. You'd need a separate global variable for each, leading to code that's harder to manage and prone to errors.</li>
+                
+                <li><strong>Lack of Cohesion:</strong> The data (e_puck_led_is_on) and the functions that operate on it (turn_led_on, turn_led_off) are separate. There's no inherent grouping.</li>
+                
+                <li><strong>Limited Reusability:</strong> The turn_led_on and turn_led_off functions are tied to the specific global variable, making them less reusable for other LED systems.</li>
+            </ul>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2>3. Introduction to Classes and Objects</h2>
+        <p>Object-Oriented Programming solves these problems by combining data and the code that acts on that data into cohesive units called objects, defined by classes.</p>
+
+        <div class="key-concept">
+            <h3>Class:</h3>
+            <ul>
+                <li>Think of a class as a <strong>blueprint, template, or mold</strong> for creating objects. Just like a blueprint for a GCTronic e-puck robot defines its general structure, a class defines the characteristics and behaviors that all objects of that type will possess.</li>
+                
+                <li>In Python, we use the <span class="strong">class</span> keyword to define a class. By convention, class names use PascalCase (e.g., RobotLED, EPuckMotor).</li>
+            </ul>
+        </div>
+
+        <div class="key-concept">
+            <h3>Object (or Instance):</h3>
+            <ul>
+                <li>An object is an individual "thing" created from a class. If a RobotLED class is the blueprint, an actual blinking LED on your e-puck is an object (or instance) of that RobotLED class.</li>
+                
+                <li>Objects are the "values" for a given type.</li>
+                
+                <li>You can create multiple, distinct objects from a single class, just as you can build many e-puck robots from the same design specification.</li>
+            </ul>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2>4. Object Instantiation</h2>
+        <p><strong>Instantiation</strong> is the process of creating a new object from a class. When you call the class name followed by parentheses (e.g., RobotLED()), you are instantiating an object.</p>
+
+        <p>This process involves two main steps behind the scenes:</p>
+        <ol>
+            <li>The constructor (e.g., RobotLED()) first calls a static method, <strong>__new__</strong>, which is responsible for allocating memory for the new object.</li>
+            <li>The constructor then calls the special <strong>__init__</strong> method. This method is often called the initializer or instance constructor, and its primary purpose is to initialize the instance variables the object needs in its initial state. You will define an __init__ method for nearly every class you create.</li>
+        </ol>
+
+        <hr class="section-divider">
+
+        <h2>5. Constructor Design and Instance Variables (State)</h2>
+        <p>Objects are defined by their <strong>state</strong> (data) and <strong>behavior</strong> (actions). The __init__ method is crucial for setting up an object's initial state.</p>
+
+        <div class="key-concept">
+            <h3>The __init__() Method:</h3>
+            <ul>
+                <li>This is a special "magic method" (or "dunder method" due to its double underscores) that Python automatically calls whenever a new object is instantiated from a class.</li>
+                <li>Its main role is to initialize the object's instance variables.</li>
+                <li>All __init__ methods must take <strong>self</strong> as their first parameter. The self parameter conventionally represents the object being created (or the object that invoked the method).</li>
+                <li>The __init__ method can also take other parameters that allow you to pass in initial values when creating an object. These parameters are then typically used to set the initial values of instance variables.</li>
+            </ul>
+        </div>
+
+        <div class="key-concept">
+            <h3>Instance Variables (State):</h3>
+            <ul>
+                <li><strong>State</strong> refers to the data associated with an individual class instance. For an e-puck robot, its state could include its unique ID, current battery level, position coordinates, or the latest readings from its proximity sensors.</li>
+                <li>Instance variables are used to track this state information. They are tied to a specific instance of a class.</li>
+                <li>Every object's state is distinct from other instances of the same type. For example, one EPuckRobot object might have battery_level = 95.0, while another EPuckRobot object from the same class has battery_level = 50.5.</li>
+                <li>You create and access instance variables using the <strong>self.variable_name</strong> syntax inside the class definition. They persist as long as the object exists.</li>
+            </ul>
+        </div>
+
+        <h3>Python Example: EPuckRobot Class with Constructor and Instance Variables</h3>
+        <p>Let's define a basic EPuckRobot class with its initial state parameters.</p>
+
+        <div class="code-block"><span class="comment"># EPuck_Robot_Fundamentals.py</span>
+
+
+<span class="keyword">class</span> <span class="function">EPuckRobot</span>:
+    <span class="string">"""
+    A blueprint for EPuck robot objects, defining their fundamental state.
+    """</span>
+    
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>, robot_id: str, initial_battery_percentage: float):
+        <span class="string">"""
+        Initializes a new EPuckRobot object.
+
+        Args:
+            robot_id (str): A unique identifier for the robot.
+            initial_battery_percentage (float): The initial battery level (0.0 to 100.0).
+        """</span>
+        <span class="comment"># Instance variables (state) for each robot object</span>
+        <span class="keyword">self</span>.robot_id = robot_id  <span class="comment"># str data type</span>
+        <span class="keyword">self</span>.battery_percentage = initial_battery_percentage  <span class="comment"># float data type</span>
+        <span class="keyword">self</span>.current_speed = 0.0  <span class="comment"># float data type, initialized to 0</span>
+        <span class="keyword">self</span>.is_moving = <span class="keyword">False</span>  <span class="comment"># bool data type</span>
+
+        <span class="function">print</span>(<span class="string">f"EPuckRobot '{self.robot_id}' initialized with {self.battery_percentage}% battery."</span>)
+
+
+<span class="comment"># Demonstrating constructor design and instance variables</span>
+robot_alpha = <span class="function">EPuckRobot</span>(<span class="string">"Alpha_7"</span>, 98.5)
+robot_beta = <span class="function">EPuckRobot</span>(<span class="string">"Beta_12"</span>, 75.0)
+
+<span class="function">print</span>(<span class="string">f"Robot Alpha's ID: {robot_alpha.robot_id}, Battery: {robot_alpha.battery_percentage}%"</span>)
+<span class="function">print</span>(<span class="string">f"Robot Beta's ID: {robot_beta.robot_id}, Speed: {robot_beta.current_speed}"</span>)
+
+<span class="comment"># Modifying state (instance variables)</span>
+robot_alpha.current_speed = 0.5
+robot_alpha.is_moving = <span class="keyword">True</span>
+<span class="function">print</span>(<span class="string">f"Robot Alpha's new speed: {robot_alpha.current_speed}, Is Moving: {robot_alpha.is_moving}"</span>)
+        </div>
+
+        <p>In this example, <strong>robot_id</strong> (string), <strong>battery_percentage</strong> (float), <strong>current_speed</strong> (float), and <strong>is_moving</strong> (boolean) are instance variables that hold the unique state for each EPuckRobot object.</p>
+
+        <hr class="section-divider">
+
+        <h2>6. Instance Methods (Behavior)</h2>
+        <p>While instance variables define an object's state, <strong>instance methods</strong> define its behaviors – what the object can do.</p>
+
+        <div class="key-concept">
+            <h3>Defining Methods:</h3>
+            <ul>
+                <li>Instance methods are functions defined inside a class.</li>
+                <li>Like the __init__ method, all instance methods must have <strong>self</strong> as their first parameter. This self allows the method to access and modify the instance variables (state) of the specific object on which it was called.</li>
+                <li>Instance methods are shared by all class instances. This means every EPuckRobot object will have access to the same methods (e.g., move_forward(), report_status()).</li>
+            </ul>
+        </div>
+
+        <h3>Python Example: EPuckRobot Class with Instance Methods</h3>
+        <p>Let's add some behaviors to our EPuckRobot class:</p>
+
+        <div class="code-block"><span class="comment"># EPuck_Robot_Fundamentals_with_Methods.py</span>
+
+
+<span class="keyword">class</span> <span class="function">EPuckRobot</span>:
+    <span class="string">"""
+    A blueprint for EPuck robot objects, defining their fundamental state and behaviors.
+    """</span>
+    
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>, robot_id: str, initial_battery_percentage: float):
+        <span class="string">"""
+        Initializes a new EPuckRobot object.
+        """</span>
+        <span class="keyword">self</span>.robot_id = robot_id
+        <span class="keyword">self</span>.battery_percentage = initial_battery_percentage
+        <span class="keyword">self</span>.current_speed = 0.0
+        <span class="keyword">self</span>.is_moving = <span class="keyword">False</span>
+        <span class="function">print</span>(<span class="string">f"EPuckRobot '{self.robot_id}' initialized with {self.battery_percentage}% battery."</span>)
+
+    <span class="keyword">def</span> <span class="function">set_speed</span>(<span class="keyword">self</span>, speed: float):
+        <span class="string">"""
+        Sets the current speed of the robot.
+        If speed is greater than 0, the robot is considered moving.
+        """</span>
+        <span class="keyword">if</span> speed < 0:
+            <span class="function">print</span>(<span class="string">"Speed cannot be negative."</span>)
+            <span class="keyword">return</span>
+        
+        <span class="keyword">self</span>.current_speed = speed  <span class="comment"># Modifies an instance variable</span>
+        <span class="keyword">self</span>.is_moving = (speed > 0)  <span class="comment"># Modifies an instance variable</span>
+        <span class="function">print</span>(<span class="string">f"Robot '{self.robot_id}' speed set to {self.current_speed} m/s. Moving: {self.is_moving}"</span>)
+
+    <span class="keyword">def</span> <span class="function">perform_scan</span>(<span class="keyword">self</span>):
+        <span class="string">"""
+        Simulates a sensor scan and reports the robot's ID.
+        """</span>
+        <span class="function">print</span>(<span class="string">f"Robot '{self.robot_id}' is performing a sensor scan..."</span>)
+        <span class="comment"># In a real robot, this would interact with sensor hardware</span>
+        <span class="comment"># and potentially update sensor data instance variables.</span>
+
+    <span class="keyword">def</span> <span class="function">report_status</span>(<span class="keyword">self</span>):
+        <span class="string">"""
+        Reports the current status of the robot.
+        """</span>
+        <span class="function">print</span>(<span class="string">f"\n--- Status Report for Robot '{self.robot_id}' ---"</span>)
+        <span class="function">print</span>(<span class="string">f"  Battery: {self.battery_percentage}%"</span>)
+        <span class="function">print</span>(<span class="string">f"  Speed: {self.current_speed} m/s"</span>)
+        <span class="function">print</span>(<span class="string">f"  Moving: {self.is_moving}"</span>)
+        <span class="function">print</span>(<span class="string">"---------------------------------------"</span>)
+
+
+<span class="comment"># Instantiate two different EPuckRobot objects</span>
+robot_alpha = <span class="function">EPuckRobot</span>(<span class="string">"Alpha_7"</span>, 98.5)
+robot_beta = <span class="function">EPuckRobot</span>(<span class="string">"Beta_12"</span>, 75.0)
+
+<span class="comment"># Demonstrate distinct states and shared behaviors</span>
+robot_alpha.<span class="function">report_status</span>()
+robot_beta.<span class="function">report_status</span>()
+
+<span class="comment"># Call instance methods to change state and perform actions</span>
+robot_alpha.<span class="function">set_speed</span>(0.3)
+robot_alpha.<span class="function">perform_scan</span>()
+
+robot_beta.<span class="function">set_speed</span>(0.8)
+
+<span class="comment"># Report status again to see changes</span>
+robot_alpha.<span class="function">report_status</span>()
+robot_beta.<span class="function">report_status</span>()
+        </div>
+
+        <p>In this comprehensive example, <strong>set_speed()</strong>, <strong>perform_scan()</strong>, and <strong>report_status()</strong> are instance methods that define the behaviors of our EPuckRobot objects. They interact with and modify the instance variables (current_speed, is_moving, battery_percentage) specific to the object on which they are called. Notice how both robot_alpha and robot_beta can use the same set_speed() method, but the action they perform (and the state they modify) is unique to that specific robot object.</p>
+
+        <hr class="section-divider">
+    </div>
+</body>
+</html>

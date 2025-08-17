@@ -7,6 +7,10 @@
 
 ---
 
+## Session Introduction
+
+In this session you will explore the foundational concepts of Object-Oriented Programming (OOP) through practical robotics applications. You'll begin with understanding why OOP is essential for robotics development, then dive into hands-on implementation of classes and objects. The session includes a comprehensive theory component, followed by practical exercises where you'll create IR sensor classes, witness a live demonstration of LIDAR implementation across different programming paradigms (procedural, functional, and object-oriented), explore advanced filtering techniques, and conclude with setting up Webots for future simulation work.
+
 ## Learning Objectives
 
 By the end of this session, you will be able to:
@@ -15,6 +19,19 @@ By the end of this session, you will be able to:
 - Implement states (using instance variables) and behaviors (using instance methods) for robot systems  
 - Explain constructor design and instance variables
 - Apply encapsulation principles in robotics contexts
+- Create and use multiple sensor objects in a robotics context
+- Compare procedural, functional, and object-oriented programming approaches
+- Set up Webots robotics simulator for future labs
+
+---
+
+## Session Structure
+
+1. **Theory Session** - Object-Oriented Programming fundamentals
+2. **Hands-on Exercise** - Create IR Sensor classes
+3. **Live Demonstration** - LIDAR implementation in three programming paradigms
+4. **Extension Activity** - Advanced LIDAR data filtering techniques
+5. **Lab Setup** - Webots simulator installation and configuration
 
 ---
 
@@ -284,71 +301,435 @@ class EPuckRobot:
 
 ---
 
-## In-Class Activities
+## Hands-on Exercise: Mock IR Sensor Class
 
-### Activity 1: Basic Robot Class (30 minutes)
+In this practical activity, you will write a Python class that simulates infrared (IR) distance sensors commonly found on robots like the e-puck.
 
-Create a `SimpleRobot` class with the following requirements:
+### Task: Create and Use a Mock IR Sensor Class
 
-!!! example "Implementation Task"
-    ```python
-    class SimpleRobot:
-        # TODO: Implement constructor with name and battery_level
-        # TODO: Add instance variables for position (x, y)
-        # TODO: Implement move_to(x, y) method
-        # TODO: Implement get_distance_from_origin() method
-    ```
+You will create **five separate sensor objects** for different positions on the robot:
 
-### Activity 2: Multiple Object Management (20 minutes)
+- `front_left`
+- `front_center`  
+- `front_right`
+- `back_left`
+- `back_right`
 
-Create and manage multiple robot instances:
+### Step-by-Step Instructions
 
-!!! example "Multi-Robot Task"
-    - Create 3 different robot objects
-    - Give each robot different starting positions
-    - Move them to different locations
-    - Compare their distances from origin
+1. Create a class named `IRSensor`
+2. The `__init__` method should take one parameter `name` (string) to store the sensor's position
+3. Create a method `get_reading()` that returns a simulated reading (integer between 1 and 100 cm)
+4. Include a proper docstring for `get_reading()` with **Parameters** and **Returns**
+5. In your main code, create 5 separate instances of `IRSensor`, one for each position listed above
+6. Call `get_reading()` on each instance and print the results
 
-### Activity 3: Encapsulation Challenge (25 minutes)
+### Example Implementation Template
 
-Implement proper encapsulation for a sensor class:
+```python
+import random
 
-!!! example "Sensor Encapsulation"
-    - Create a `ProximitySensor` class
-    - Hide internal calibration data
-    - Provide public methods for reading values
-    - Add data validation
+class IRSensor:
+    """Simulates an infrared distance sensor."""
+    
+    def __init__(self, name: str):
+        """Initialize the IR sensor with a position name."""
+        self.name = name
+        print(f"IR Sensor '{self.name}' initialized")
+    
+    def get_reading(self):
+        """
+        Simulate getting a distance measurement from the IR sensor.
+        
+        Parameters:
+            None
+        
+        Returns:
+            int: Distance measurement in centimeters (1–100).
+        """
+        reading = random.randint(1, 100)
+        print(f"{self.name} sensor reading: {reading} cm")
+        return reading
+
+if __name__ == "__main__":
+    # Create sensor instances
+    front_left = IRSensor("Front Left")
+    front_center = IRSensor("Front Center")
+    front_right = IRSensor("Front Right")
+    back_left = IRSensor("Back Left")
+    back_right = IRSensor("Back Right")
+    
+    # Get readings from each sensor
+    print("\n--- Sensor Readings ---")
+    front_left.get_reading()
+    front_center.get_reading()
+    front_right.get_reading()
+    back_left.get_reading()
+    back_right.get_reading()
+```
+
+!!! tip "Extension Challenge"
+    In a later lesson, we will discuss **composition** and how to group these sensor objects into a single class that manages multiple sensors.
 
 ---
 
-## Structured Out-of-Class Activities
+## Live Demonstration: LIDAR Implementation Across Programming Paradigms
 
-### Required (3 hours)
+The instructor will now demonstrate how to implement a mock LIDAR sensor using three different programming approaches, showing the evolution from simple procedural code to sophisticated object-oriented design.
 
-**Task:** Implement basic Robot class hierarchy with proper encapsulation
+### 1. Procedural Approach
 
-1. **Robot Base Class (1 hour)**
-   - Design and implement a base `Robot` class
-   - Include essential attributes: ID, position, battery level
-   - Implement basic movement and status methods
+The simplest implementation using basic Python constructs:
 
-2. **Specialized Robot Classes (1.5 hours)**
-   - Create `MobileRobot` subclass with wheel control
-   - Create `SensorRobot` subclass with sensor arrays
-   - Demonstrate proper inheritance usage
+```python
+# lidar_procedural.py
+import random
 
-3. **Testing and Documentation (0.5 hour)**
-   - Write unit tests for your classes
-   - Document all methods with proper docstrings
-   - Test object instantiation and method calls
+# Procedural: all logic inline
+measurements = []
+for _ in range(36):
+    measurement = random.randint(1, 1200)  # cm range
+    measurements.append(measurement)
 
-### Submission Requirements
+print("LIDAR Scan (Procedural):")
+print(measurements)
+```
 
-Upload to your portfolio:
-- Python source files with complete implementations
-- Test files demonstrating functionality  
-- Documentation explaining design decisions
-- Screenshots of successful test runs
+**Characteristics:**
+- All code in linear sequence
+- No reusability
+- Hard to extend or modify
+- Good for simple, one-time tasks
+
+### 2. Functional Approach
+
+Using functions to organize and reuse code:
+
+```python
+# lidar_functional.py
+import random
+
+def get_measurement():
+    """Simulates one LIDAR measurement."""
+    return random.randint(1, 1200)
+
+def scan_lidar(num_measurements=36):
+    """Performs a LIDAR scan and returns a list of measurements."""
+    return [get_measurement() for _ in range(num_measurements)]
+
+if __name__ == "__main__":
+    readings = scan_lidar()
+    print("LIDAR Scan (Functional):")
+    print(readings)
+```
+
+**Characteristics:**
+- Functions provide reusability
+- Better organization than procedural
+- Easy to test individual functions
+- Good for stateless operations
+
+### 3. Object-Oriented Approach
+
+Using classes to create reusable, stateful components:
+
+```python
+# lidar_oop.py
+import random
+
+class Lidar:
+    """Simulates a LIDAR sensor with configurable parameters."""
+    
+    def __init__(self, num_measurements=36):
+        """Initialize LIDAR with specified number of measurements."""
+        self.num_measurements = num_measurements
+        print(f"LIDAR initialized with {self.num_measurements} measurement points")
+
+    def get_measurement(self):
+        """Simulates a single LIDAR measurement."""
+        return random.randint(1, 1200)  # Distance in cm
+
+    def scan(self):
+        """Performs a full scan and returns a list of measurements."""
+        readings = []
+        for _ in range(self.num_measurements):
+            readings.append(self.get_measurement())
+        return readings
+    
+    def get_status(self):
+        """Returns the current status of the LIDAR sensor."""
+        return f"LIDAR Status: {self.num_measurements} measurement points configured"
+
+if __name__ == "__main__":
+    # Create LIDAR instance
+    lidar = Lidar()
+    print(lidar.get_status())
+    
+    # Perform scan
+    readings = lidar.scan()
+    print("LIDAR Scan (OOP):")
+    print(f"Collected {len(readings)} measurements")
+    print(f"Sample readings: {readings[:5]}...")  # Show first 5 readings
+```
+
+**Characteristics:**
+- Encapsulation of data and behavior
+- Reusable sensor objects
+- Easy to extend with new features
+- Maintainable and scalable
+- Perfect for robotics applications
+
+### Comparison Summary
+
+| Aspect | Procedural | Functional | Object-Oriented |
+|--------|------------|------------|----------------|
+| **Reusability** | Low | Medium | High |
+| **Maintainability** | Low | Medium | High |
+| **Scalability** | Poor | Good | Excellent |
+| **State Management** | Global vars | Parameters | Instance vars |
+| **Best For** | Simple scripts | Stateless operations | Complex systems |
+
+!!! note "Live Coding Session"
+    The instructor will demonstrate building each version from scratch, showing:
+    - How to refactor from procedural to functional
+    - How to convert functional code to object-oriented
+    - Benefits and trade-offs of each approach
+    - When to use each paradigm in robotics
+
+---
+
+## Extension Activity: Advanced LIDAR Data Filtering
+
+Your LIDAR class currently returns a full 360° scan with 36 measurements. Sometimes you may only want part of the scan — for example, the front arc. Here are three different design approaches to achieve this:
+
+### Approach 1: Add a `scan_filtered()` Method
+
+```python
+def scan_filtered(self, start=0, end=36):
+    """Return scan results between given indices."""
+    full_scan = self.scan()
+    return full_scan[start:end]
+```
+
+**Pros:**
+- ✅ Keeps filtering logic inside the class (good encapsulation)
+- ✅ Easy to call: `lidar.scan_filtered(4, 20)`
+- ✅ Can be extended later for angle-based filtering
+
+**Cons:**
+- ❌ Adds an extra method that mostly wraps existing logic
+
+### Approach 2: Add Optional Parameters to `scan()`
+
+```python
+def scan(self, start=0, end=36):
+    """Perform scan with optional filtering."""
+    full_readings = [self.get_measurement() for _ in range(self.num_measurements)]
+    return full_readings[start:end]
+```
+
+**Pros:**
+- ✅ No new method — extends the original one
+- ✅ Introduces default parameters
+
+**Cons:**
+- ❌ Mixes two responsibilities: generating data and filtering data
+
+### Approach 3: Process After the Scan
+
+```python
+# In your main code
+readings = lidar.scan()
+front_arc = readings[4:20]  # Extract front arc
+```
+
+**Pros:**
+- ✅ Keeps `scan()` simple and single-purpose
+- ✅ Flexible filtering in client code
+
+**Cons:**
+- ❌ Filtering logic is done outside the class
+- ❌ More code in the main application
+
+### Design Recommendation
+
+A good design follows the **Single Responsibility Principle**: one method should do one thing well. The recommended approach is:
+
+1. Keep `scan()` for the full 360° scan
+2. Filter with list slicing when needed
+3. If filtering becomes common, add a dedicated `scan_filtered()` method inside the class
+
+!!! example "Extension Challenge"
+    Implement one of these filtering approaches in your LIDAR class and test it with different ranges:
+    - Front arc: indices 14-22 (forward-facing sensors)
+    - Left side: indices 27-35 
+    - Right side: indices 1-9
+
+---
+
+## Out-of-Class Research Activities
+
+To reinforce your understanding of the concepts covered in this session, research the following topics:
+
+### Research Topics
+
+1. **Object-Oriented Programming Principles**
+   - Investigate the four main principles of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction
+   - Find real-world examples of how each principle is applied in robotics software
+   - Compare OOP with other programming paradigms (procedural, functional)
+
+2. **Class Design Best Practices**
+   - Research the Single Responsibility Principle and how it applies to class design
+   - Look into naming conventions for classes and methods in Python
+   - Study examples of well-designed classes in robotics frameworks
+
+3. **Python Class Features**
+   - Explore Python's special methods (`__init__`, `__str__`, `__repr__`)
+   - Research property decorators and getters/setters
+   - Investigate class methods vs instance methods vs static methods
+
+4. **Robotics Software Architecture**
+   - Study how major robotics frameworks (ROS, ROS2) use object-oriented design
+   - Research component-based architectures in robotics
+   - Look into design patterns commonly used in robotics software
+
+!!! tip "Research Resources"
+    - Python official documentation on classes
+    - ROS tutorials and documentation
+    - Robotics software engineering books and articles
+    - Open-source robotics projects on GitHub
+
+---
+
+## Lab 1: Webots Robot Simulator Setup
+
+To complete this session, students will set up the Webots robotics simulator that will be used in future lab exercises.
+
+!!! info "Lab Credits"
+    This lab is based on the excellent work by Felipe Martins:
+    
+    **Original Repository:** [Robotics-Simulation-Labs](https://github.com/felipenmartins/Robotics-Simulation-Labs)  
+    **Author:** Felipe Nascimento Martins  
+    **License:** Available on GitHub
+    
+    We acknowledge and appreciate the open-source contribution to robotics education.
+
+### Objectives
+
+The goal of this lab is to guide you to install, configure and familiarize yourself with Webots simulator. At the end of this lab you should be able to run Python code to control your simulated robot.
+
+### About Webots
+
+Webots is an open-source robotics simulator that can simulate several types of robots and sensors. It provides a complete development environment to model, program and simulate robots and the world they are in, including physics simulation. It is widely used in industry, education and research.
+
+![Webots Interface](../images/Webots_screenshot.png)
+
+### Installation Tasks
+
+To complete this lab you have to follow the steps described below:
+
+#### 1. Download and Install Webots
+
+- Download from [https://cyberbotics.com/](https://cyberbotics.com/)
+- You need **Webots R2022a or newer** for the Robotics Simulation Labs
+- Available for Windows, macOS and Linux
+- The download and installation process can take a while
+
+#### 2. Complete Webots Tutorial 1
+
+- Follow [Webots Tutorial 1](https://cyberbotics.com/doc/guide/tutorial-1-your-first-simulation-in-webots) 
+- Complete through **Hands-on #7**
+- After that, you'll configure Python (next step)
+
+#### 3. Install Python 3 (if needed)
+
+- You need the **64-bit** version of Python 3
+- Download from [python.org](https://www.python.org/downloads/)
+- **Windows users**: Select "Add to PATH" during installation
+- **Version compatibility**: Not all Python versions work with all Webots versions
+  - Webots R2022b works with Python 3.7, 3.8, 3.9 and 3.10
+  - Webots R2022a does **not** support Python 3.10
+
+#### 4. Reboot Your System
+
+- **Important**: Reboot after installing Python
+
+#### 5. Test Python Installation
+
+- Open Command Prompt/Terminal
+- Type `python`, `python3`, or `python3.x` (depending on your version)
+- You should see something like:
+
+```
+Python 3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
+- Type `exit()` to return to terminal
+
+#### 6. Install Required Libraries
+
+- Follow instructions [here](https://cyberbotics.com/doc/guide/using-python#libraries)
+- Install at least **NumPy**
+- Optional: **OpenCV** (also installs NumPy)
+
+#### 7. Configure Webots for Python
+
+- In Webots: `Tools > Preferences > Python command`
+- Set to `python` or `python3` (whatever worked in step 5)
+- **macOS/Windows without PATH**: Use full path to Python installation
+
+#### 8. Complete Tutorial
+
+- Continue from ["Create New Controller"](https://cyberbotics.com/doc/guide/tutorial-1-your-first-simulation-in-webots?tab-language=python#create-a-new-controller)
+- Complete through **Hands-on #10**
+- **Important**: Select `Python` when viewing code examples
+
+### Troubleshooting Tips
+
+!!! warning "Common Issues"
+    
+    **64-bit Python Required**: 32-bit versions don't work with Webots
+    
+    **macOS**: May need full Python path in Webots preferences
+    
+    **Linux**: Avoid symbolic links in project folders; consider APT version
+    
+    **Windows PATH**: If Python isn't found, add it to system PATH and reboot
+    
+    **Hardware Warning**: Intel GPU warning is normal and won't affect our labs
+
+#### Windows Installation Issues
+
+If you see a security warning when installing Webots on Windows, click "More info" then "Run anyway":
+
+![Windows Security Warning](../images/windows_message.png)
+
+#### Python PATH Configuration
+
+If you need to add Python to your Windows PATH manually, the configuration should look like this:
+
+![Python PATH Configuration](../images/windows_path_variable_python.png)
+
+### Performance Optimization
+
+If Webots runs slowly on your hardware:
+
+- Click `WorldInfo > FPS` and reduce to 20
+- Increase `basicTimeStep` to 32
+- Go to `Tools > Preferences > OpenGL`
+- Reduce `Ambient Occlusion` and `Texture Quality`
+
+### Conclusion
+
+After completing these steps, you should have:
+- Webots installed and configured for Python
+- Understanding of basic Webots concepts
+- Ability to write simple Python programs to control simulated robots
+
+!!! success "Lab Complete"
+    You're now ready for future robotics simulation exercises using Webots!
 
 ---
 
@@ -378,9 +759,12 @@ Upload to your portfolio:
 ## Resources
 
 ### Downloads
-- [:material-download: Class implementation examples](../downloads.md)
-- [:material-download: Unit test templates](../downloads.md)
-- [:material-download: Robot class starter code](../downloads.md)
+- [:material-download: Robot class starter code](../files/robot_class_starter.py)
+- [:material-download: Complete class implementations](../files/class_implementation_examples.py)
+- [:material-download: LIDAR procedural version](../files/lidar_procedural_clean.py)
+- [:material-download: LIDAR functional version](../files/lidar_functional_clean.py)
+- [:material-download: LIDAR object-oriented version](../files/lidar_oop_clean.py)
+- [:material-download: All Week 4 resources](../downloads.md#week-4-object-model--class-fundamentals)
 
 ### Further Reading
 - Python Classes Documentation

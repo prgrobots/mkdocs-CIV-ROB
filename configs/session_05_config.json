@@ -1,0 +1,153 @@
+{
+  "SESSION_NUMBER": "5",
+  "SESSION_TITLE": "Advanced Class Features & Magic Methods",
+  "WEEK_NUMBER": "5",
+  "ELEMENT_CODE": "ICTPRG430 Element 2.2",
+  "DURATION": "4",
+  "PHASE_NAME": "Object-Oriented Programming Theory",
+  "SESSION_DESCRIPTION": "explore advanced Python class features including magic methods, properties, and class methods through robotics applications",
+  "SESSION_COMPONENTS": "theory on advanced OOP concepts, hands-on implementation of magic methods, live demonstration of property decorators, extension activities with operator overloading, and practical robot class enhancements",
+  "SESSION_OVERVIEW": "This session builds upon the foundational OOP concepts from Session 4, introducing advanced class features that make Python classes more powerful and intuitive. You'll learn how to implement magic methods for natural object interactions, use properties for controlled attribute access, and create more sophisticated robot class hierarchies.",
+
+  "OBJECTIVE_1": "Implement Python magic methods (__str__, __repr__, __eq__, __lt__) for custom classes",
+  "OBJECTIVE_2": "Use property decorators and getters/setters for controlled attribute access", 
+  "OBJECTIVE_3": "Distinguish between instance methods, class methods, and static methods",
+  "OBJECTIVE_4": "Apply operator overloading to create intuitive class interfaces",
+  "OBJECTIVE_5": "Design advanced robot classes with sophisticated behaviors and interactions",
+
+  "COMPONENT_1_NAME": "Theory Session",
+  "COMPONENT_1_DESCRIPTION": "Advanced OOP concepts and magic methods",
+  "COMPONENT_2_NAME": "Hands-on Exercise", 
+  "COMPONENT_2_DESCRIPTION": "Implement magic methods for robot classes",
+  "COMPONENT_3_NAME": "Live Demonstration",
+  "COMPONENT_3_DESCRIPTION": "Property decorators and class method examples",
+  "COMPONENT_4_NAME": "Extension Activity",
+  "COMPONENT_4_DESCRIPTION": "Operator overloading for robot positioning",
+  "COMPONENT_5_NAME": "Lab Enhancement",
+  "COMPONENT_5_DESCRIPTION": "Upgrade existing robot classes with advanced features",
+
+  "SECTION_1_TITLE": "Python Magic Methods",
+  "SECTION_1_CONTENT": "Magic methods (also called dunder methods) provide special functionality to your classes, allowing them to integrate seamlessly with Python's built-in functions and operators.",
+  "SUBSECTION_1_1_TITLE": "String Representation Methods",
+  "SUBSECTION_1_1_CONTENT": "The __str__ and __repr__ methods control how objects are displayed.",
+
+  "SECTION_2_TITLE": "Property Decorators and Attribute Access",
+  "SECTION_2_CONTENT": "Properties allow you to define methods that can be accessed like attributes, providing controlled access to object data.",
+  "SUBSECTION_2_1_TITLE": "Getters and Setters",
+  "SUBSECTION_2_1_CONTENT": "Property decorators enable validation and computed attributes.",
+
+  "SECTION_3_TITLE": "Class Methods vs Static Methods",
+  "SECTION_3_CONTENT": "Understanding the differences between instance methods, class methods (@classmethod), and static methods (@staticmethod).",
+
+  "SECTION_4_TITLE": "Operator Overloading", 
+  "SECTION_4_CONTENT": "Implementing operators like +, -, ==, < for custom classes to create intuitive interfaces.",
+
+  "SECTION_5_TITLE": "Advanced Robot Class Design",
+  "SECTION_5_CONTENT": "Applying advanced OOP features to create sophisticated robot class hierarchies.",
+
+  "HANDS_ON_TITLE": "Hands-on Exercise: Enhanced Robot Class",
+  "HANDS_ON_DESCRIPTION": "In this activity, you will enhance a basic robot class with magic methods, properties, and advanced features.",
+  "TASK_TITLE": "Create an Advanced Robot Class",
+  "TASK_DESCRIPTION": "Implement a robot class with string representation, comparison operators, and property-controlled attributes.",
+  
+  "STEP_1": "Add __str__ and __repr__ methods to provide meaningful object representations",
+  "STEP_2": "Implement __eq__ and __lt__ methods for robot comparison based on battery level",
+  "STEP_3": "Create a @property for battery_status that returns 'High', 'Medium', or 'Low'", 
+  "STEP_4": "Add a @property setter for position with validation",
+  "STEP_5": "Implement __add__ operator to combine robot battery levels",
+  
+  "CODE_TEMPLATE": "class AdvancedRobot:\\n    def __init__(self, robot_id, battery_level):\\n        self._robot_id = robot_id\\n        self._battery_level = battery_level\\n    \\n    def __str__(self):\\n        # TODO: Return user-friendly string\\n        pass\\n    \\n    def __repr__(self):\\n        # TODO: Return developer-friendly string\\n        pass",
+  
+  "EXTENSION_CHALLENGE": "Implement a RobotFleet class that manages multiple robots using advanced OOP features.",
+
+  "DEMONSTRATION_TITLE": "Live Demonstration: Property Decorators in Action",
+  "DEMONSTRATION_DESCRIPTION": "The instructor will demonstrate how property decorators work with a real robot sensor class, showing validation, computed properties, and controlled access patterns.",
+  
+  "DEMO_SECTION_1_TITLE": "Basic Property Implementation",
+  "DEMO_CODE_1": "@property\\ndef temperature(self):\\n    return self._temperature\\n\\n@temperature.setter\\ndef temperature(self, value):\\n    if value < -50 or value > 100:\\n        raise ValueError('Invalid temperature')\\n    self._temperature = value",
+  
+  "DEMO_SECTION_2_TITLE": "Computed Properties",
+  "DEMO_CODE_2": "@property\\ndef battery_status(self):\\n    if self._battery_level > 75:\\n        return 'High'\\n    elif self._battery_level > 25:\\n        return 'Medium'\\n    else:\\n        return 'Low'",
+
+  "EXTENSION_TITLE": "Extension Activity: Robot Position Operators",
+  "EXTENSION_DESCRIPTION": "Implement operator overloading to enable natural mathematical operations with robot positions.",
+  "EXTENSION_APPROACH_1": "Overload + operator for position addition",
+  "EXTENSION_CODE_1": "def __add__(self, other):\\n    if isinstance(other, Position):\\n        return Position(self.x + other.x, self.y + other.y)\\n    return NotImplemented",
+  "PRO_1": "Natural syntax: new_pos = robot1.position + robot2.position",
+  "PRO_2": "Intuitive mathematical operations",
+  "CON_1": "Need to handle multiple types carefully",
+  "CON_2": "Can be overused leading to unclear code",
+
+  "EXTENSION_CHALLENGE_DESCRIPTION": "Create a Position class with full operator support (+, -, *, ==, <) and integrate it with your robot classes.",
+
+  "RESEARCH_TOPIC_1": "Advanced Magic Methods",
+  "RESEARCH_DETAIL_1": "Explore __getitem__, __setitem__ for container-like behavior",
+  "RESEARCH_DETAIL_2": "Study __call__ method for callable objects",
+
+  "RESEARCH_TOPIC_2": "Descriptor Protocol", 
+  "RESEARCH_DETAIL_1": "Learn about __get__, __set__, __delete__ methods",
+  "RESEARCH_DETAIL_2": "Understand how properties work internally",
+
+  "RESEARCH_TOPIC_3": "Metaclasses and Class Creation",
+  "RESEARCH_DETAIL_1": "Advanced topic: how classes are created in Python",
+  "RESEARCH_DETAIL_2": "When and why to use metaclasses",
+
+  "RESOURCE_1": "Python Data Model documentation",
+  "RESOURCE_2": "Real Python articles on magic methods",
+  "RESOURCE_3": "Advanced OOP patterns in robotics frameworks",
+
+  "LAB_TITLE": "Lab Enhancement: Advanced Robot Features",
+  "LAB_DESCRIPTION": "Upgrade your existing robot classes from previous sessions with advanced OOP features.",
+  "LAB_ATTRIBUTION": "Based on concepts from Session 4 robot implementations.",
+  "LAB_OBJECTIVES": "Enhance robot classes with magic methods, properties, and operator overloading for more intuitive and powerful interfaces.",
+
+  "LAB_SECTION_1_TITLE": "Magic Method Integration",
+  "LAB_SECTION_1_CONTENT": "Add string representation and comparison methods to existing robot classes.",
+
+  "LAB_STEP_1_TITLE": "Implement String Methods",
+  "LAB_STEP_1_INSTRUCTIONS": "Add __str__ and __repr__ methods to all robot classes for better debugging and user interaction.",
+
+  "LAB_STEP_2_TITLE": "Add Comparison Methods", 
+  "LAB_STEP_2_INSTRUCTIONS": "Implement __eq__, __lt__, and related methods to enable robot comparisons and sorting.",
+
+  "TROUBLESHOOTING_TIPS": "Remember that magic methods should return NotImplemented for unsupported types rather than raising exceptions. Property setters should validate input data appropriately.",
+
+  "LAB_CONCLUSION": "After completing this lab, your robot classes will have professional-level interfaces with natural Python integration.",
+  "COMPLETION_MESSAGE": "Your robot classes now support advanced OOP features! You can compare robots, print them naturally, and use properties for controlled access.",
+
+  "TAKEAWAY_1": "Magic Methods",
+  "TAKEAWAY_1_DESCRIPTION": "Enable natural Python integration with custom classes",
+  "TAKEAWAY_2": "Properties", 
+  "TAKEAWAY_2_DESCRIPTION": "Provide controlled access to object attributes with validation",
+  "TAKEAWAY_3": "Method Types",
+  "TAKEAWAY_3_DESCRIPTION": "Distinguish between instance, class, and static methods",
+  "TAKEAWAY_4": "Operator Overloading",
+  "TAKEAWAY_4_DESCRIPTION": "Create intuitive interfaces through operator customization",
+
+  "NEXT_WEEK": "6",
+  "NEXT_SESSION_TITLE": "Inheritance & Polymorphism",
+  "NEXT_PREVIEW_1": "Class inheritance and method overriding",
+  "NEXT_PREVIEW_2": "Polymorphism in robotics applications", 
+  "NEXT_PREVIEW_3": "Abstract base classes and interfaces",
+
+  "PREV_WEEK": "4",
+  "PREV_SESSION_NUMBER": "04",
+  "NEXT_SESSION_NUMBER": "06",
+
+  "DOWNLOAD_1_TITLE": "Advanced robot class examples",
+  "DOWNLOAD_1_FILE": "advanced_robot_examples.py",
+  "DOWNLOAD_2_TITLE": "Magic methods reference", 
+  "DOWNLOAD_2_FILE": "magic_methods_reference.py",
+  "DOWNLOAD_3_TITLE": "Property decorator templates",
+  "DOWNLOAD_3_FILE": "property_templates.py",
+  "DOWNLOADS_ANCHOR": "week-5-advanced-class-features--magic-methods",
+
+  "READING_1": "Python magic methods documentation",
+  "READING_2": "Property decorator best practices",
+  "READING_3": "Advanced OOP design patterns",
+
+  "DOWNLOAD_TITLE": "Week 5 Starter Code",
+  "DOWNLOAD_ANCHOR": "week-5-advanced-class-features--magic-methods",
+  
+  "SETUP_REQUIREMENTS": "Ensure your Python development environment is configured with the robot classes from Session 4 available for enhancement."
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Task – Mock IR Sensors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+            color: #222;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+        ul {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Task: Create and Use a Mock IR Sensor Class</h1>
+
+<p>
+In this activity, you will write a Python class that simulates a single infrared (IR) distance sensor.  
+You will then create <strong>five separate sensor objects</strong> for the robot:
+</p>
+
+<h2>Sensor Instances to Create</h2>
+<ul>
+    <li><code>front_left</code></li>
+    <li><code>front_center</code></li>
+    <li><code>front_right</code></li>
+    <li><code>back_left</code></li>
+    <li><code>back_right</code></li>
+</ul>
+
+<h2>Step-by-Step Instructions</h2>
+<ol>
+    <li>Create a class named <code>IRSensor</code>.</li>
+    <li>The <code>__init__</code> method should take one parameter <code>name</code> (string) to store the sensor's position.</li>
+    <li>Create a method <code>get_reading()</code> that returns a simulated reading (integer between 1 and 100 cm).</li>
+    <li>Include a docstring for <code>get_reading()</code> with <strong>Parameters</strong> and <strong>Returns</strong>.</li>
+    <li>In your main code, create 5 separate instances of <code>IRSensor</code>, one for each position listed above.</li>
+    <li>Call <code>get_reading()</code> on each instance and print the results.</li>
+</ol>
+
+<h2>Example Docstring for <code>get_reading()</code></h2>
+<pre><code>def get_reading(self):
+    """
+    Simulate getting a distance measurement from the IR sensor.
+
+    Parameters:
+        None
+
+    Returns:
+        int: Distance measurement in centimeters (1–100).
+    """
+</code></pre>
+
+<h2>Example Usage (You Will Complete This)</h2>
+<pre><code>if __name__ == "__main__":
+    front_left = IRSensor("Front Left")
+    front_center = IRSensor("Front Center")
+    front_right = IRSensor("Front Right")
+    back_left = IRSensor("Back Left")
+    back_right = IRSensor("Back Right")
+
+    # Print readings from each sensor
+    print(front_left.get_reading())
+    print(front_center.get_reading())
+    print(front_right.get_reading())
+    print(back_left.get_reading())
+    print(back_right.get_reading())
+</code></pre>
+
+<p>
+In a later lesson, we will discuss <strong>composition</strong> and how to group these sensor objects into a single class that manages multiple sensors.
+</p>
+
+</body>
+</html>
