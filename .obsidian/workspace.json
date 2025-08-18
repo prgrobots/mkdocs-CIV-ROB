@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "finshed student code session 5.md",
+                "file": "docs/sessions/session-05.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "finshed student code session 5"
+              "title": "session-05"
             }
           }
         ],
@@ -197,10 +197,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "84da7ef8235bce5b",
+  "active": "40f543786a62e89e",
   "lastOpenFiles": [
-    "Docs generator.md",
+    "online editor links.txt",
+    "scratch.py",
     "finshed student code session 5.md",
+    "Docs generator.md",
     "docs/sessions/session-05.md",
     "Robotics-Simulation-Labs-main/Lab2/ReadMe_lab2.md",
     "docs/sessions/session-04.md",
@@ -217,7 +219,6 @@
     "docs/files/lidar_functional_clean.py",
     "docs/files/lidar_procedural_clean.py",
     "docs/files/class_implementation_examples.py",
-    "docs/files/unittest_template.py",
     "docs/images/windows_path_variable_python.png",
     "docs/images/windows_message.png",
     "docs/images/Webots_screenshot.png"

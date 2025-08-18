@@ -245,3 +245,19 @@ a[href*="download"]:hover {
         padding: 0;
     }
 }
+
+.md-content__inner {
+    max-width: none;
+    width: 100%;
+}
+
+/* Responsive iframe container */
+.md-typeset .admonition iframe,
+.md-typeset iframe {
+    width: 100%;
+    min-height: 500px;
+    height: 60vh; /* Use viewport height for better scaling */
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+}

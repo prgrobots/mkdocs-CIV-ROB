@@ -20,9 +20,9 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.top
+    - toc.integrate  # This moves TOC to left sidebar
     - search.highlight
     - search.share
-    - toc.follow
     - content.code.copy
     - content.code.annotate
   palette:
@@ -74,6 +74,7 @@ plugins:
   - git-revision-date-localized:
       type: date
       timezone: Australia/Perth
+  - iframe:
 
 # Extensions
 markdown_extensions:

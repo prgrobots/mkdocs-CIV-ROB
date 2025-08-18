@@ -3,7 +3,7 @@
 **Week:** 5  
 **Element:** ICTPRG430 Element 2.2  
 **Duration:** 4 hours  
-**Phase:** Object-Oriented Programming Advanced Features
+**Phase:** Object-Oriented Programming 
 
 ---
 
@@ -41,21 +41,14 @@ This session builds on the foundational OOP concepts from Session 4, introducing
 
 ## Pre-Session Preparation
 
-!!! info "Required Reading" Review the following materials before class:
+!!! tip "Setup Check" 
+    Ensure your development environment is ready:
 
-```
-- Session 4 materials (Classes, objects, and instantiation)
-- Python magic methods documentation
-- [Download: Advanced Robot Class Examples](../downloads.md#week-5-advanced-class-features--magic-methods)
-```
-
-!!! tip "Setup Check" Ensure your development environment is ready:
-
-```
-- Python 3.9+ with Webots integration working
-- VS Code with Python extension
-- Completed Session 4 robot class exercises
-```
+    ```
+    - Python 3.9+ with Webots integration working
+    - VS Code with Python
+    - Completed Session 4 robot class exercises
+    ```
 
 ---
 
@@ -85,21 +78,22 @@ print(robot)
 
 ### Understanding `__str__` vs `__repr__`
 
-!!! abstract "Key Differences"
+!!! abstract 
+    "Key Differences"
 
-```
-**`__str__`**: For end users - human-readable, friendly format
+    
+    **`__str__`** : For end users - human-readable, friendly format
 
-- Called by `print()` and `str()`
-- Should be clear and informative for users
-- Think: "What would a robot operator want to see?"
+    - Called by `print()` and `str()`
+    - Should be clear and informative for users
+    - Think: "What would a robot operator want to see?"
 
-**`__repr__`**: For developers - precise, unambiguous format
+    **`__repr__`**: For developers - precise, unambiguous format
 
-- Called by `repr()` and when displaying in lists/debugger
-- Should ideally be valid Python code to recreate the object
-- Think: "What would help a programmer debug this?"
-```
+    - Called by `repr()` and when displaying in lists/debugger
+    - Should ideally be valid Python code to recreate the object
+    - Think: "What would help a programmer debug this?"
+    
 
 ---
 
@@ -127,99 +121,17 @@ classDiagram
     note for EPuckRobot "Enhanced with string representation methods\nfor better debugging and user interaction"
 ```
 
-### Complete Implementation
-
-```python
-class EPuckRobot:
-    """Enhanced EPuckRobot with string representations."""
+!!! example "Interactive Code Example"
     
-    def __init__(self, robot_id: str, initial_battery_percentage: float):
-        """Initialize a new EPuckRobot object."""
-        self.robot_id = robot_id
-        self.battery_percentage = initial_battery_percentage
-        self.current_speed = 0.0
-        self.is_moving = False
-        print(f"EPuckRobot '{self.robot_id}' initialized with {self.battery_percentage}% battery")
-    
-    def __str__(self):
-        """
-        Return user-friendly string representation.
-        
-        Returns:
-            str: Human-readable robot status
-        """
-        status = "MOVING" if self.is_moving else "STOPPED"
-        return f"Robot {self.robot_id}: {self.battery_percentage}% battery, {status} (speed: {self.current_speed})"
-    
-    def __repr__(self):
-        """
-        Return developer-friendly string representation.
-        
-        Returns:
-            str: Precise representation for debugging
-        """
-        return f"EPuckRobot(robot_id='{self.robot_id}', initial_battery_percentage={self.battery_percentage})"
-    
-    def move_forward(self, speed: float):
-        """Start moving the robot forward at specified speed."""
-        if 0.0 <= speed <= 1.0:
-            self.current_speed = speed
-            self.is_moving = True
-            print(f"Robot {self.robot_id} moving forward at speed {speed}")
-        else:
-            print("Speed must be between 0.0 and 1.0")
-    
-    def stop(self):
-        """Stop the robot movement."""
-        self.current_speed = 0.0
-        self.is_moving = False
-        print(f"Robot {self.robot_id} stopped")
-```
+    <div markdown="1">
 
-### Seeing the Magic Methods in Action
+    Try this interactive example to experiment with the concepts:
 
-```python
-# Create robot instances
-robot_alpha = EPuckRobot("Alpha_7", 98.5)
-robot_beta = EPuckRobot("Beta_12", 75.0)
+    <iframe src="https://www.online-python.com/MpavDRKGf2" width="100%" height="1200" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
-# Start one robot moving
-robot_alpha.move_forward(0.6)
+    </div>
 
-# Different ways to display objects
-print("=== Using print() [calls __str__] ===")
-print(robot_alpha)
-print(robot_beta)
 
-print("\n=== Using repr() [calls __repr__] ===")
-print(repr(robot_alpha))
-print(repr(robot_beta))
-
-print("\n=== In a list [uses __repr__] ===")
-robot_fleet = [robot_alpha, robot_beta]
-print(robot_fleet)
-```
-
-**Output:**
-
-```
-EPuckRobot 'Alpha_7' initialized with 98.5% battery
-EPuckRobot 'Beta_12' initialized with 75.0% battery
-Robot Alpha_7 moving forward at speed 0.6
-
-=== Using print() [calls __str__] ===
-Robot Alpha_7: 98.5% battery, MOVING (speed: 0.6)
-Robot Beta_12: 75.0% battery, STOPPED (speed: 0.0)
-
-=== Using repr() [calls __repr__] ===
-EPuckRobot(robot_id='Alpha_7', initial_battery_percentage=98.5)
-EPuckRobot(robot_id='Beta_12', initial_battery_percentage=75.0)
-
-=== In a list [uses __repr__] ===
-[EPuckRobot(robot_id='Alpha_7', initial_battery_percentage=98.5), EPuckRobot(robot_id='Beta_12', initial_battery_percentage=75.0)]
-```
-
----
 
 ## Hands-on Exercise: Enhanced IR Sensor with String Representations
 
@@ -273,9 +185,7 @@ class IRSensor:
         Args:
             name (str): Position identifier for the sensor
         """
-        self.name = name
-        self.last_reading = None  # Track the most recent reading
-        print(f"IR Sensor '{self.name}' initialized")
+        pass
     
     def __str__(self):
         """
@@ -284,10 +194,8 @@ class IRSensor:
         Returns:
             str: Human-readable sensor status
         """
-        if self.last_reading is None:
-            return f"{self.name} Sensor: No readings taken"
-        else:
-            return f"{self.name} Sensor: {self.last_reading} cm"
+        pass
+
     
     def __repr__(self):
         """
@@ -296,7 +204,7 @@ class IRSensor:
         Returns:
             str: Precise representation for debugging
         """
-        return f"IRSensor(name='{self.name}')"
+        pass
     
     def get_reading(self):
         """
@@ -305,10 +213,8 @@ class IRSensor:
         Returns:
             int: Distance measurement in centimeters (1-100)
         """
-        self.last_reading = random.randint(1, 100)
-        print(f"{self.name} sensor reading: {self.last_reading} cm")
-        return self.last_reading
-    
+        pass
+
     def get_status(self):
         """
         Get detailed status information about the sensor.
@@ -316,10 +222,8 @@ class IRSensor:
         Returns:
             str: Detailed sensor status
         """
-        if self.last_reading is None:
-            return f"Sensor '{self.name}': Ready (no readings yet)"
-        else:
-            return f"Sensor '{self.name}': Active (last reading: {self.last_reading} cm)"
+        pass
+"
 
 if __name__ == "__main__":
     # Create sensor instances
@@ -351,7 +255,7 @@ if __name__ == "__main__":
         print(sensor.get_status())
 ```
 
-**Expected Output:**
+**Expected Output (values will change for yours):**
 
 ```
 IR Sensor 'Front Left' initialized
@@ -712,120 +616,125 @@ if __name__ == "__main__":
 
 Test your understanding of the advanced OOP concepts covered in this session:
 
-??? question "Question 1: `__str__` vs `__repr__` Purpose" **Question**: You have a `RobotSensor` object. When would Python call `__str__()` vs `__repr__()`? Give specific examples.
+!!! question "Question 1: `__str__` vs `__repr__` Purpose" 
+    **Question**: You have a `RobotSensor` object. When would Python call `__str__()` vs `__repr__()`? Give specific examples.
 
-```
-??? tip "Click to reveal answer"
-    **Answer**: 
-    
-    **`__str__()` is called when:**
-    - You use `print(sensor)`
-    - You use `str(sensor)` 
-    - String formatting like `f"Sensor data: {sensor}"`
-    
-    **`__repr__()` is called when:**
-    - You use `repr(sensor)`
-    - The object appears in a list: `print([sensor1, sensor2])`
-    - In the debugger or interactive shell when you just type the variable name
-    - When `__str__()` is not defined, Python falls back to `__repr__()`
-```
 
-??? question "Question 2: Property Decorator Syntax" **Question**: Look at this code. What's wrong with it?
+    ??? tip "Click to reveal answer"
+        **Answer**: : 
+    
+        **`__str__()` is called when:**
+        - You use `print(sensor)`
+        - You use `str(sensor)` 
+        - String formatting like `f"Sensor data: {sensor}"`
+        
+        **`__repr__()` is called when:**
+        - You use `repr(sensor)`
+        - The object appears in a list: `print([sensor1, sensor2])`
+        - In the debugger or interactive shell when you just type the variable name
+        - When `__str__()` is not defined, Python falls back to `__repr__()`
 
-````
-```python
-class Robot:
-    def __init__(self):
-        self._speed = 0.0
-    
-    @property
-    def speed(self, value):
-        self._speed = value
-```
 
-??? tip "Click to reveal answer"
-    **Answer**: 
-    
-    The `@property` decorator is used incorrectly. The method decorated with `@property` should be the **getter** (no parameters except `self`). To set values, you need a separate **setter**:
-    
+!!! question "Question 2: Property Decorator Syntax" 
+    **Question**: Look at this code. What's wrong with it?
+
+
     ```python
     class Robot:
         def __init__(self):
             self._speed = 0.0
         
         @property
-        def speed(self):  # Getter - no value parameter
-            return self._speed
-        
-        @speed.setter
-        def speed(self, value):  # Setter - has value parameter
+        def speed(self, value):
             self._speed = value
     ```
-````
 
-??? question "Question 3: When to Use Properties" **Question**: Your robot has a `battery_level` that should never go below 0 or above 100. Should you use a property or just a regular attribute? Why?
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        The `@property` decorator is used incorrectly. The method decorated with `@property` should be the **getter** (no parameters except `self`). To set values, you need a separate **setter**:
+        
+        ```python
+        class Robot:
+            def __init__(self):
+                self._speed = 0.0
+            
+            @property
+            def speed(self):  # Getter - no value parameter
+                return self._speed
+            
+            @speed.setter
+            def speed(self, value):  # Setter - has value parameter
+                self._speed = value
+        ```
+    ````
 
-```
-??? tip "Click to reveal answer"
-    **Answer**: 
-    
-    **Use a property** because you need validation. Here's why:
-    
-    - **Validation needed**: Battery levels have strict limits (0-100%)
-    - **Safety critical**: Invalid battery levels could cause unsafe robot behavior
-    - **Clean syntax**: `robot.battery_level = 85` is cleaner than `robot.set_battery_level(85)`
-    
-    Example implementation:
-    ```python
-    @property
-    def battery_level(self):
-        return self._battery_level
-    
-    @battery_level.setter
-    def battery_level(self, value):
-        if not 0 <= value <= 100:
-            raise ValueError("Battery level must be 0-100%")
-        self._battery_level = value
-    ```
-```
+??? question "Question 3: When to Use Properties"
+    **Question**: Your robot has a `battery_level` that should never go below 0 or above 100. Should you use a property or just a regular attribute? Why?
 
-??? question "Question 4: Understanding `self` in Magic Methods" **Question**: In `def __str__(self):`, what does `self` refer to, and why don't you need to pass it when calling `print(robot)`?
 
-```
-??? tip "Click to reveal answer"
-    **Answer**: 
-    
-    - **`self` refers to**: The specific robot object that `__str__()` is being called on
-    - **Why you don't pass it**: Python automatically passes `self` when you call methods on objects
-    
-    When you write `print(robot)`:
-    1. Python internally calls `robot.__str__()`
-    2. Python automatically passes the `robot` object as the `self` parameter
-    3. Your `__str__` method can then access `self.robot_id`, `self.battery_percentage`, etc.
-    
-    This is the same reason you don't write `robot.move_forward(robot, 0.5)` - Python handles the `self` parameter automatically.
-```
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        **Use a property** because you need validation. Here's why:
+        
+        - **Validation needed**: Battery levels have strict limits (0-100%)
+        - **Safety critical**: Invalid battery levels could cause unsafe robot behavior
+        - **Clean syntax**: `robot.battery_level = 85` is cleaner than `robot.set_battery_level(85)`
+        
+        Example implementation:
+        ```python
+        @property
+        def battery_level(self):
+            return self._battery_level
+        
+        @battery_level.setter
+        def battery_level(self, value):
+            if not 0 <= value <= 100:
+                raise ValueError("Battery level must be 0-100%")
+            self._battery_level = value
+        ```
 
-??? question "Question 5: Property vs Method Decision" **Question**: For each of these robot operations, should it be a property or a method? Explain your reasoning.
 
-```
-- `robot.current_speed` (just getting the speed)
-- `robot.turn_left()` (making the robot turn)  
-- `robot.battery_percentage` (getting/setting battery level)
-- `robot.emergency_stop()` (immediate stop command)
+??? question "Question 4: Understanding `self` in Magic Methods" 
+    **Question**: In `def __str__(self):`, what does `self` refer to, and why don't you need to pass it when calling `print(robot)`?
 
-??? tip "Click to reveal answer"
-    **Answer**: 
-    
-    - **`robot.current_speed`** → **Property**: Getting data, no action performed, feels like an attribute
-    - **`robot.turn_left()`** → **Method**: Performs an action, changes robot state, side effects
-    - **`robot.battery_percentage`** → **Property**: Data that might need validation, attribute-like access
-    - **`robot.emergency_stop()`** → **Method**: Critical action, clear that something important happens
-    
-    **Rule of thumb**: 
-    - **Properties**: For data access (getting/setting values) that feels like attribute access
-    - **Methods**: For actions, operations, or anything that "does something" to the object
-```
+
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        - **`self` refers to**: The specific robot object that `__str__()` is being called on
+        - **Why you don't pass it**: Python automatically passes `self` when you call methods on objects
+        
+        When you write `print(robot)`:
+        1. Python internally calls `robot.__str__()`
+        2. Python automatically passes the `robot` object as the `self` parameter
+        3. Your `__str__` method can then access `self.robot_id`, `self.battery_percentage`, etc.
+        
+        This is the same reason you don't write `robot.move_forward(robot, 0.5)` - Python handles the `self` parameter automatically.
+
+
+??? question "Question 5: Property vs Method Decision"
+    **Question**: For each of these robot operations, should it be a property or a method? Explain your reasoning.
+
+
+    - `robot.current_speed` (just getting the speed)
+    - `robot.turn_left()` (making the robot turn)  
+    - `robot.battery_percentage` (getting/setting battery level)
+    - `robot.emergency_stop()` (immediate stop command)
+
+    ??? tip "Click to reveal answer"
+        **Answer**: 
+        
+        - **`robot.current_speed`** → **Property**: Getting data, no action performed, feels like an attribute
+        - **`robot.turn_left()`** → **Method**: Performs an action, changes robot state, side effects
+        - **`robot.battery_percentage`** → **Property**: Data that might need validation, attribute-like access
+        - **`robot.emergency_stop()`** → **Method**: Critical action, clear that something important happens
+        
+        **Rule of thumb**: 
+        - **Properties**: For data access (getting/setting values) that feels like attribute access
+        - **Methods**: For actions, operations, or anything that "does something" to the object
+
 
 ---
 
@@ -833,15 +742,16 @@ class Robot:
 
 In this lab, you will implement a line-following robot using object-oriented programming principles in the Webots simulator. This lab builds on the OOP concepts learned in Sessions 4 and 5, applying them to a real robotics problem.
 
-!!! info "Lab Credits" This lab is adapted from the excellent work by Felipe Martins:
+!!! info "Lab Credits" 
+    This lab is adapted from the excellent work by Felipe Martins:
 
-```
-**Original Repository:** [Robotics-Simulation-Labs](https://github.com/felipenmartins/Robotics-Simulation-Labs)  
-**Author:** Felipe Nascimento Martins  
-**License:** Available on GitHub
+    
+    **Original Repository:** [Robotics-Simulation-Labs](https://github.com/felipenmartins/Robotics-Simulation-Labs)  
+    **Author:** Felipe Nascimento Martins  
+    **License:** Available on GitHub
 
-We acknowledge and appreciate the open-source contribution to robotics education.
-```
+    We acknowledge and appreciate the open-source contribution to robotics education.
+    
 
 ### Lab Objectives
 
@@ -870,9 +780,12 @@ Before starting the implementation, ensure you have:
 2. **Python 3.9+** configured with Webots
 3. Basic understanding of **OOP concepts** from Sessions 4 and 5
 
+### First - do the Lab !
+**Lab 2 - Line-Following** https://felipenmartins.github.io/Robotics-Simulation-Labs/Lab2/ 
+
 ### Line-Following Robot Architecture
 
-Our robot will use an object-oriented architecture with these main components:
+Our robot will use an **object-oriented architecture** with these main components:
 
 #### System Architecture UML Diagram
 
