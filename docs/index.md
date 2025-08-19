@@ -2,6 +2,13 @@
 
 Welcome to the **Robotics Programming Course** covering ICTPRG430 (Apply introductory object-oriented language skills) and ICTPRG439 (Use pre-existing components).
 
+<section style="border: 1px #bf5406 solid; margin: 1rem; width: 40rem; min-width: 40rem; max-width: 40rem; padding: 0;"><header style="width: 100%; background: #bf5406; color: white; margin-top: 0; padding: 0rem;">
+<h4 style="padding: 1rem; margin: 0; font-size: 1.6rem; width: 100%;">Welcome to Country</h4>
+<img style="height: auto;" height="177" width="790" alt="" src="./images/Acknowledgement.jpg" /></header>
+<div style="padding: 1rem; color: #000000;">North Metropolitan TAFE recognises Australian Aboriginal and Torres Strait Islander People's unique cultural and spiritual relationships to the land, waters, and seas and their rich contribution to our society.</div>
+<div style="padding: 1rem; color: #000000;">We acknowledge the Mooro Boodjar pand Whadjuk Noongar People, the traditional custodians of the lands on which our campuses are located, and pay our respects to ancestors and Elders, past and present</div>
+</section>
+
 ## Course Overview
 
 **Duration:** 18 sessions (4 hours each, weekly delivery)  
@@ -13,10 +20,10 @@ Welcome to the **Robotics Programming Course** covering ICTPRG430 (Apply introdu
 ## Quick Navigation
 
 ### Course Information
-- **[Learning & Assessment Plan](revised-lap.md)** - Complete 18-week course schedule
-- **[Downloads & Resources](downloads.md)** - Essential files and materials
-- **[Assessment Information](assessment.md)** - Portfolio requirements
-- **[Course Glossary](glossary.md)** - Key terms and definitions
+- **[Learning & Assessment Plan](./course-overview/revised_lap.md)** - Complete 18-week course schedule
+- **[Downloads & Resources](./files/downloads_page.md)** - Essential files and materials
+- **[Assessment Information](https://blackboard.northmetrotafe.wa.edu.au/webapps/blackboard/content/listContentEditable.jsp?content_id=_2344850_1&course_id=_26268_1&mode=reset)** - Portfolio requirements
+- **[Course Glossary](./reference/glossary_page.md)** - Key terms and definitions
 
 ### Weekly Sessions
 
@@ -74,9 +81,9 @@ Welcome to the **Robotics Programming Course** covering ICTPRG430 (Apply introdu
     - Lab exercise materials
 
 !!! tip "Getting Started"
-    1. Review the [Learning & Assessment Plan](revised-lap.md)
+    1. Review the [Learning & Assessment Plan](./course-overview/revised_lap.md)
     2. Set up your development environment using materials from [Downloads](downloads.md)
-    3. Check the [Glossary](glossary.md) for key terminology
+    3. Check the [Glossary](./reference/glossary_page.md) for key terminology
     4. Begin with [Week 1](sessions/session-01.md)
 
 ## Assessment Portfolio
@@ -135,17 +142,16 @@ Each portfolio includes both theoretical understanding and practical implementat
 ## Key Resources
 
 !!! info "Essential Downloads"
-    Visit the [Downloads](resources/downloads.md) page for:
+    Visit the (under development) page for:
     
     - Development environment setup files
     - Project templates and starter code
-    - Assessment rubrics and submission templates
     - Lab exercise materials
 
 !!! tip "Getting Started"
-    1. Review the [Learning & Assessment Plan](course-overview/revised-lap.md)
+    1. Review the [Learning & Assessment Plan](./course-overview/revised_lap.md)
     2. Set up your development environment using materials from [Downloads](resources/downloads.md)
-    3. Check the [Glossary](reference/glossary.md) for key terminology
+    3. Check the [Glossary](./reference/glossary_page.md) for key terminology
     4. Begin with [Session 1](sessions/phase1/session-01.md)
 
 ## Assessment Portfolio
@@ -160,10 +166,10 @@ Each portfolio includes both theoretical understanding and practical implementat
 ## Support and Resources
 
 - **[Glossary](reference/glossary.md)** - Definitions of key terms and concepts
-- **[API Reference](reference/api-reference.md)** - Technical documentation
-- **[Troubleshooting](reference/troubleshooting.md)** - Common issues and solutions
-- **[Code Examples](resources/code-examples.md)** - Practical implementation examples
+- **[API Reference](reference/api-reference.md)** - Technical documentation (under development)
+- **[Troubleshooting](reference/troubleshooting.md)** - Common issues and solutions (under development)
+
 
 ---
 
-*Ready to begin? Start with the [Learning & Assessment Plan](course-overview/revised-lap.md) to understand the complete course structure.*
+*Ready to begin? Start with the [Learning & Assessment Plan](./course-overview/revised_lap.md) to understand the complete course structure.*

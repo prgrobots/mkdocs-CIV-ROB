@@ -753,15 +753,6 @@ In this lab, you will implement a line-following robot using object-oriented pro
     We acknowledge and appreciate the open-source contribution to robotics education.
     
 
-### Lab Objectives
-
-By the end of this lab, you will be able to:
-
-- Apply object-oriented programming principles to robotics problems
-- Implement sensor fusion for line detection
-- Design control algorithms using class-based architecture
-- Use magic methods for debugging robot behavior
-- Create modular, reusable robotics code
 
 ### About Line Following
 
@@ -780,439 +771,234 @@ Before starting the implementation, ensure you have:
 2. **Python 3.9+** configured with Webots
 3. Basic understanding of **OOP concepts** from Sessions 4 and 5
 
-### First - do the Lab !
-**Lab 2 - Line-Following** https://felipenmartins.github.io/Robotics-Simulation-Labs/Lab2/ 
 
-### Line-Following Robot Architecture
+# Lab 2 – Line-follower with State Machine
 
-Our robot will use an **object-oriented architecture** with these main components:
+## Objectives
+The goal of this lab is to learn more about controllers in Webots via the implementation of state machine to make the robot follow a line. 
 
-#### System Architecture UML Diagram
+## Pre-requisites
+* You must have Webots R2022a (or newer) properly configured to work with Python. 
+* You must know how to create a robot controller in Python and how to run a simulation. 
 
-```mermaid
-classDiagram
-    class LineFollowerRobot {
-        -DistanceSensors distance_sensors
-        -GroundSensors ground_sensors  
-        -WheelMotors motors
-        +__init__()
-        +run()
-        +__str__()
-        +__repr__()
-    }
-    
-    class DistanceSensors {
-        -list sensor_objects
-        +__init__(robot)
-        +get_readings()
-        +detect_obstacle()
-        +__str__()
-    }
-    
-    class GroundSensors {
-        -list sensor_objects
-        +__init__(robot) 
-        +get_readings()
-        +detect_line()
-        +calculate_line_position()
-        +__str__()
-    }
-    
-    class WheelMotors {
-        -Motor left_motor
-        -Motor right_motor
-        -float _max_speed
-        +__init__(robot)
-        +set_speeds(left, right)
-        +stop()
-        +speed: float
-        +__str__()
-    }
-    
-    LineFollowerRobot --> DistanceSensors : uses
-    LineFollowerRobot --> GroundSensors : uses  
-    LineFollowerRobot --> WheelMotors : uses
-    
-    note for LineFollowerRobot "Main controller coordinating\nall robot subsystems"
-    note for DistanceSensors "Manages IR distance sensors\nfor obstacle detection"
-    note for GroundSensors "Manages ground-facing sensors\nfor line detection"
-    note for WheelMotors "Controls left and right wheel\nmotors with speed validation"
+If you are still missing any of those, please go back to [Lab 1](../Lab1/ReadMe.md) and complete the corresponding tasks.
+
+## The e-puck robot
+Webots contains a realistic model of e-puck, a small differential-drive mobile robot. The movement of this type of robot is controlled by independently adjusting the speeds of the left and right wheels. 
+
+The e-puck robot has multiple sensors. To detect obstacles, the e-puck contains 8 infrared distance sensors around its body. Optionally, 3 infrared sensors can be mounted under its base, pointing to the floor, allowing the implementation of a line-following behavior. 
+
+An explanation about the e-puck robot and how to use it in Webots is available in Webots Tutorial 4.
+
+## Tasks
+
+1- **Follow [Webots Tutorial 4](https://cyberbotics.com/doc/guide/tutorial-4-more-about-controllers?tab-language=python)** to better understand the e-puck model and learn how to control it in Python.
+
+2- After finishing tutorial 4, **open the line-following sample world**: Click on `File > Open Sample Worlds` and go to `robots > gctronic > e-puck` and select `e-puck_botstudio_with_floor_sensors.wbt`. You should see a world similar to the one shown in Figure 1. _In the next steps you **must** use the e-puck robot that is loaded with this sample world because it has the floor sensors to detect the line._ 
+
+![Webots screenshot with e-puck](../images/Webots_screenshot_with_e-puck.png)
+###### Figure 1. Webots screenshot with the world “e-puck_botstudio_with_floor_sensors.wbt”.
+
+3- You will need to make changes to the file, so you have to **save the sample world with a different name** on a folder of your choice. 
+
+4- Write a simple program to **investigate the values returned by the floor sensors** when the robot is over the white floor and over the black line. You can use the print function to show the sensor values in the Webots console. _More information about how to read the ground sensors is given below._
+
+5- **Test the motor speeds** to determine how fast the robot should run and turn in order to follow the line.
+
+6- **Create a new controller in Python and implement a line-following behavior** using what you learned from the steps above. You can use the state machine shown in Figure 2 as reference. 
+
+7- Finally, **add one extra state to stop the robot when no line is detected**.
+ 
+![Line-follower state machine](../images/line-following_state_machine.png)
+###### Figure 2. A state machine diagram that implements a line-follower behavior.
+
+
+## Ground sensors
+In Tutorial 4 you made use of the distance sensors around the robot. To detect the line on the floor you need to use the ground sensors, instead. The simulator also treats the ground sensors as distance sensors because they are of the same type (infrared sensors). In Python you can access the ground sensors as shown below.
+
+To initialize the ground sensors:
+```
+gs = []
+gsNames = ['gs0', 'gs1', 'gs2']
+for i in range(3):
+    gs.append(robot.getDevice(gsNames[i]))
+    gs[i].enable(timestep)
 ```
 
-### Step 1: Ground Sensors Class Implementation
+To read the ground sensors inside the main loop:
+```
+gsValues = []
+for i in range(3):
+    gsValues.append(gs[i].getValue())
+``` 
 
-The ground sensors detect the line by measuring light reflection from the ground. Dark lines reflect less light than the surrounding surface.
+To read sensor values inside the main loop:
+```
+line_right = gsValues[0]
+line_center = gsValues[1]
+line_left = gsValues[2]
+```
 
-```python
-class GroundSensors:
-    """Manages ground-facing sensors for line detection."""
-    
-    def __init__(self, robot):
-        """
-        Initialize ground sensors.
+If you need inspiration, check the [template code available here!](../images/line_following_template.py)
+
+## Solution
+Try to implement the state machine yourself before checking the solution! A possible solution (without the stop state) is available [here](../images/line_following_behavior.py).
+
+The video below shows the solution code in action:
+
+[![Video screenshot](../images/line-follower_video_screenshot.png)](https://youtu.be/nW06dLEe-AU).
+
+## Challenge: Obstacle Avoidance
+Change the state machine to make e-puck **avoid obstacles** placed on its way. You can choose the type of obstacle to add: different formats might require different strategies of obstacle avoidance. Obstacles with round or rectangular shape usually are the less demanding, while obstacles with U-shape require more complex strategies.
+
+An illustration of obstacle avoidance with state machine is given in Figure 3. Note that the obstacle avoidance strategy that was implemented required four extra states, some executing the same action as others. The animation in Figure 3 shows the active state (in red) for each condition during the simulation.
+
+![Obstacle avoidance gif](../images/obstacle_avoidance.gif)
+###### Figure 3. Illustration of obstacle avoidance strategy added to the existing line-follower state machine.
+
+Student Wilfred van Reenen made the video below to illustrate the excellent performance of his obstacle avoidance state machine. If you want to go above and beyond, try to get your robot to avoid all those obstacles!
+
+[![Video 2 screenshot](../images/Line_follower_robot_with_obstacles.png)](https://youtu.be/eELnG58BYzg).
+
+!!! info "OOP Refactoring task" 
+    # Lab 2: Object-Oriented Programming Refactoring
+
+    ## Task Overview
+    Refactor the provided procedural line-following robot code into an object-oriented design.
+
+    ## Main Task
+    1. **Complete the `LineFollowingRobot` class**
+    - Fill in all `TODO` methods in the provided framework
+    - Move global variables into the class as instance variables
+    - Break the main loop into logical methods
+    - Test that your robot still follows lines correctly
+
+    ## Learning Objectives
+    - Practice **encapsulation** (data and methods together)
+    - Learn to organize code into **classes and methods**
+    - Understand how OOP improves code structure and readability
+
+    ### Line-Following Robot Architecture
+
+    Our robot will use an **object-oriented architecture** with these main components:
+
+
+    ## Line-Following Architecture UML Diagram
+
+    ```mermaid
+        classDiagram
+        class LineFollowingRobot {
+            -MAX_SPEED: float
+            -COUNTER_MAX: int
+            -current_state: str
+            -counter: int
+            -robot: WebotsRobot
+            -timestep: int
+            -ground_sensors: list
+            -leftMotor: Motor
+            -rightMotor: Motor
+            +__init__()
+            +read_sensors(): tuple
+            +move_forward()
+            +turn_right()
+            +turn_left()
+            +update_state(line_left: bool, line_right: bool)
+            +run()
+        }
+    ```
+    ## Submission template
+
+    ```
+    # Lab 2: Object-Oriented Programming - Line Following Robot
+
+
+    from controller import Robot as WebotsRobot, DistanceSensor, Motor
+
+
+    class LineFollowingRobot:
+        """A simple robot that follows lines"""
         
-        Args:
-            robot: Webots robot object
-        """
-        # Get ground sensor objects from Webots
-        self.sensors = []
-        sensor_names = ['gs0', 'gs1', 'gs2']  # Ground sensor names in Webots
-        
-        for name in sensor_names:
-            sensor = robot.getDevice(name)
-            sensor.enable(robot.timestep)
-            self.sensors.append(sensor)
-        
-        self.num_sensors = len(self.sensors)
-        print(f"Ground sensors initialized: {self.num_sensors} sensors")
-    
-    @property
-    def readings(self):
-        """
-        Get current sensor readings.
-        
-        Returns:
-            list: List of sensor values (higher = lighter surface)
-        """
-        return [sensor.getValue() for sensor in self.sensors]
-    
-    def detect_line(self, threshold=500):
-        """
-        Detect if any sensor sees the line.
-        
-        Args:
-            threshold (float): Value below which we consider line detected
+        def __init__(self):
+            """Set up the robot and its sensors/motors"""
+            self.MAX_SPEED = 6.28
+            self.COUNTER_MAX = 5
             
-        Returns:
-            bool: True if line is detected by any sensor
-        """
-        readings = self.readings
-        return any(reading < threshold for reading in readings)
-    
-    def calculate_line_position(self, threshold=500):
-        """
-        Calculate line position relative to robot center.
-        
-        Args:
-            threshold (float): Line detection threshold
+            # State variables
+            self.current_state = 'forward'
+            self.counter = 0
             
-        Returns:
-            float: Position from -1.0 (far left) to 1.0 (far right), 0.0 = center
-        """
-        readings = self.readings
-        
-        # Convert readings to binary (0 = line, 1 = no line)
-        binary_readings = [1 if reading < threshold else 0 for reading in readings]
-        
-        # Calculate weighted average position
-        if sum(binary_readings) == 0:
-            return 0.0  # No line detected, assume center
-        
-        total_weight = 0
-        weighted_sum = 0
-        
-        for i, reading in enumerate(binary_readings):
-            if reading == 1:  # Line detected
-                position = (i - (self.num_sensors - 1) / 2) / ((self.num_sensors - 1) / 2)
-                weighted_sum += position * reading
-                total_weight += reading
-        
-        return weighted_sum / total_weight if total_weight > 0 else 0.0
-    
-    def __str__(self):
-        """User-friendly sensor status."""
-        readings = self.readings
-        return f"Ground Sensors: {[f'{r:.0f}' for r in readings]} (line detected: {self.detect_line()})"
-    
-    def __repr__(self):
-        """Developer representation."""
-        return f"GroundSensors(num_sensors={self.num_sensors})"
-```
-
-### Step 2: Distance Sensors Class Implementation
-
-The distance sensors detect obstacles in front of the robot.
-
-```python
-class DistanceSensors:
-    """Manages IR distance sensors for obstacle detection."""
-    
-    def __init__(self, robot):
-        """
-        Initialize distance sensors.
-        
-        Args:
-            robot: Webots robot object
-        """
-        # Get distance sensor objects from Webots  
-        self.sensors = []
-        sensor_names = ['ps0', 'ps1', 'ps2', 'ps5', 'ps6', 'ps7']  # Front-facing sensors
-        
-        for name in sensor_names:
-            sensor = robot.getDevice(name)
-            sensor.enable(robot.timestep)
-            self.sensors.append(sensor)
-        
-        print(f"Distance sensors initialized: {len(self.sensors)} sensors")
-    
-    @property  
-    def readings(self):
-        """
-        Get current sensor readings.
-        
-        Returns:
-            list: List of sensor values (higher = closer object)
-        """
-        return [sensor.getValue() for sensor in self.sensors]
-    
-    def detect_obstacle(self, threshold=100):
-        """
-        Detect if obstacle is too close.
-        
-        Args:
-            threshold (float): Distance threshold for obstacle detection
+            # TODO: Create robot instance
             
-        Returns:
-            bool: True if obstacle detected
-        """
-        front_sensors = self.readings[1:5]  # Use middle sensors
-        return any(reading > threshold for reading in front_sensors)
-    
-    def __str__(self):
-        """User-friendly sensor status."""
-        readings = self.readings
-        obstacle = "YES" if self.detect_obstacle() else "NO"
-        return f"Distance Sensors: obstacle={obstacle}, readings={[f'{r:.0f}' for r in readings[:3]]}"
-    
-    def __repr__(self):
-        """Developer representation."""
-        return f"DistanceSensors(num_sensors={len(self.sensors)})"
-```
-
-### Step 3: Motor Controller Class Implementation
-
-The motor controller manages wheel speeds and implements the control algorithm.
-
-```python
-class WheelMotors:
-    """Controls robot wheel motors with validation."""
-    
-    def __init__(self, robot, max_speed=6.28):
-        """
-        Initialize wheel motors.
-        
-        Args:
-            robot: Webots robot object
-            max_speed (float): Maximum wheel speed in rad/s
-        """
-        # Get motor objects from Webots
-        self.left_motor = robot.getDevice('left wheel motor')
-        self.right_motor = robot.getDevice('right wheel motor')
-        
-        # Set motors to velocity control mode
-        self.left_motor.setPosition(float('inf'))
-        self.right_motor.setPosition(float('inf'))
-        
-        self._max_speed = max_speed
-        self._current_left_speed = 0.0
-        self._current_right_speed = 0.0
-        
-        print(f"Motors initialized with max speed: {max_speed} rad/s")
-    
-    @property
-    def max_speed(self):
-        """Get maximum motor speed."""
-        return self._max_speed
-    
-    @property  
-    def speeds(self):
-        """Get current motor speeds as tuple (left, right)."""
-        return (self._current_left_speed, self._current_right_speed)
-    
-    def set_speeds(self, left_speed, right_speed):
-        """
-        Set motor speeds with validation.
-        
-        Args:
-            left_speed (float): Left wheel speed (-max_speed to +max_speed)
-            right_speed (float): Right wheel speed (-max_speed to +max_speed)
-        """
-        # Validate and clamp speeds
-        left_speed = max(-self._max_speed, min(self._max_speed, left_speed))
-        right_speed = max(-self._max_speed, min(self._max_speed, right_speed))
-        
-        # Apply speeds to motors
-        self.left_motor.setVelocity(left_speed)
-        self.right_motor.setVelocity(right_speed)
-        
-        # Store current speeds
-        self._current_left_speed = left_speed
-        self._current_right_speed = right_speed
-    
-    def stop(self):
-        """Stop both motors."""
-        self.set_speeds(0.0, 0.0)
-        print("Motors stopped")
-    
-    def __str__(self):
-        """User-friendly motor status."""
-        left, right = self.speeds
-        return f"Motors: L={left:.2f}, R={right:.2f} (max: {self._max_speed:.2f} rad/s)"
-    
-    def __repr__(self):
-        """Developer representation."""
-        return f"WheelMotors(max_speed={self._max_speed})"
-```
-
-### Step 4: Main Line Follower Robot Class
-
-Now we'll create the main robot class that coordinates all subsystems.
-
-```python
-from controller import Robot
-
-class LineFollowerRobot:
-    """Main line-following robot controller."""
-    
-    def __init__(self):
-        """Initialize the line follower robot."""
-        # Initialize Webots robot
-        self.robot = Robot()
-        self.timestep = int(self.robot.getBasicTimeStep())
-        
-        # Initialize subsystems  
-        self.ground_sensors = GroundSensors(self.robot)
-        self.distance_sensors = DistanceSensors(self.robot)
-        self.motors = WheelMotors(self.robot)
-        
-        # Control parameters
-        self.base_speed = 3.0      # Base forward speed
-        self.turn_speed = 2.0      # Speed adjustment for turning
-        
-        print("Line follower robot initialized successfully!")
-    
-    def calculate_motor_speeds(self, line_position):
-        """
-        Calculate motor speeds based on line position.
-        
-        Args:
-            line_position (float): Line position from -1.0 to 1.0
+            # TODO: Get timestep from robot
             
-        Returns:
-            tuple: (left_speed, right_speed)
-        """
-        # PID-like control: stronger turning for larger errors
-        error = line_position
-        turn_adjustment = error * self.turn_speed
+            # TODO: Initialize ground sensors
+            
+            # TODO: Initialize motors
+            
         
-        # Calculate individual wheel speeds
-        left_speed = self.base_speed - turn_adjustment
-        right_speed = self.base_speed + turn_adjustment
+        def read_sensors(self):
+            """Read ground sensors and return line detection"""
+            # TODO: Read ground sensor values
+            
+            # TODO: Check if line is detected on left and right
+            
+            # TODO: Return (line_left, line_right)
+            
         
-        return (left_speed, right_speed)
-    
-    def run(self):
-        """Main control loop."""
-        print("Starting line following behavior...")
-        print("Use Ctrl+C to stop the robot")
+        def move_forward(self):
+            """Move robot forward"""
+            # TODO: Set motor speeds for forward movement
+            
         
-        try:
-            while self.robot.step(self.timestep) != -1:
-                # Check for obstacles first
-                if self.distance_sensors.detect_obstacle():
-                    print("Obstacle detected! Stopping robot.")
-                    self.motors.stop()
-                    continue
-                
-                # Get line position
-                line_position = self.ground_sensors.calculate_line_position()
-                
-                # Calculate and apply motor speeds
-                left_speed, right_speed = self.calculate_motor_speeds(line_position)
-                self.motors.set_speeds(left_speed, right_speed)
-                
-                # Debug output every 50 steps (reduce console spam)
-                if self.robot.getTime() % 1.0 < self.timestep / 1000.0:  # Every ~1 second
-                    print(f"Line pos: {line_position:+.2f}, Motors: L={left_speed:.2f} R={right_speed:.2f}")
-                    print(f"  {self.ground_sensors}")
-                    print(f"  {self.distance_sensors}")
-                    print()
-                    
-        except KeyboardInterrupt:
-            print("\nRobot stopped by user")
-            self.motors.stop()
-    
-    def __str__(self):
-        """User-friendly robot status."""
-        return f"LineFollowerRobot: base_speed={self.base_speed}, turn_speed={self.turn_speed}"
-    
-    def __repr__(self):
-        """Developer representation."""
-        return "LineFollowerRobot()"
+        def turn_right(self):
+            """Turn robot right"""
+            # TODO: Set motor speeds for right turn
+            
+        
+        def turn_left(self):
+            """Turn robot left"""  
+            # TODO: Set motor speeds for left turn
+            
+        
+        def update_state(self, line_left, line_right):
+            """Update robot state based on line detection"""
+            # TODO: Implement state machine logic
+            
+        
+        def run(self):
+            """Main robot loop"""
+            # TODO: Implement main loop
+            
 
-# Main execution
-if __name__ == "__main__":
-    # Create and run the robot
-    robot = LineFollowerRobot()
-    print(robot)
-    print(repr(robot))
-    robot.run()
-```
 
-### Step 5: Complete Implementation
+        # Run the robot
+        if __name__ == "__main__":
+            robot = LineFollowingRobot()
+            robot.run()
+    ```
+    ## Deliverables
+    - Completed `LineFollowingRobot` class
+    - Working robot simulation
+    - Brief reflection: How does the OOP version compare to the original procedural code?
 
-Here's how to put it all together in a single file (`line_follower_robot.py`):
+    ## Conclusion
+    After following this lab you should know more about the e-puck robot model, how to program a controller for it in Python, and how to program a robot behavior based on state machine. 
 
-```python
-"""
-Line Following Robot Implementation
-Uses object-oriented programming principles for modular robotics code.
-"""
 
-from controller import Robot
-
-# [Include all the class implementations above in order:]
-# 1. GroundSensors class
-# 2. DistanceSensors class  
-# 3. WheelMotors class
-# 4. LineFollowerRobot class
-# 5. Main execution code
-
-# Run the robot
-if __name__ == "__main__":
-    robot = LineFollowerRobot()
-    robot.run()
-```
-
-### Testing Your Implementation
-
-1. **Load the line following world** in Webots
-2. **Replace the default controller** with your `line_follower_robot.py`
-3. **Run the simulation** and observe the robot behavior
-4. **Monitor the console output** to see sensor readings and motor commands
-
-### Expected Behavior
-
-Your robot should:
-
-- **Follow the line** smoothly using sensor feedback
-- **Stop when obstacles** are detected
-- **Display clear debugging information** using the magic methods
-- **Handle edge cases** like losing the line temporarily
 
 ### Debugging Tips
 
 !!! tip "Common Issues and Solutions"
 
-```
-**Robot doesn't move**: Check that motors are properly initialized and `timestep` is correct
 
-**Erratic behavior**: Adjust the `base_speed` and `turn_speed` parameters
+    **Robot doesn't move**: Check that motors are properly initialized and `timestep` is correct
 
-**Line not detected**: Verify the sensor threshold values for your specific world
+    **Erratic behavior**: Adjust the `base_speed` and `turn_speed` parameters
 
-**Console spam**: The debug output is limited to ~1 second intervals to keep it readable
-```
+    **Line not detected**: Verify the sensor threshold values for your specific world
+
+    **Console spam**: The debug output is limited to ~1 second intervals to keep it readable
+
 
 ### Extension Challenges
 
@@ -1292,8 +1078,9 @@ To reinforce your understanding and prepare for advanced topics:
     - Study debugging techniques for real-time systems
     - Investigate logging best practices for robotics applications
 
-!!! tip "Recommended Resources" - Python official documentation on data model - Real Python articles on properties and magic methods  
-- Open-source robotics projects showing OOP patterns - ROS (Robot Operating System) architectural documentation
+!!! tip "Recommended Resources" 
+    - Python official documentation on data model - Real Python articles on properties and magic methods  
+    - Open-source robotics projects showing OOP patterns - ROS (Robot Operating System) architectural documentation
 
 ---
 
@@ -1309,20 +1096,6 @@ To reinforce your understanding and prepare for advanced topics:
 
 ---
 
-## Resources
-
-### Downloads
-
-- [:material-download: Enhanced robot classes with magic methods](https://claude.ai/files/enhanced_robot_classes.py)
-- [:material-download: Complete line follower implementation](https://claude.ai/files/line_follower_robot.py)
-- [:material-download: Property decorator examples](https://claude.ai/files/property_examples.py)
-- [:material-download: Function wrapping tutorial](https://claude.ai/files/function_wrapping_examples.py)
-- [:material-download: All Week 5 resources](https://claude.ai/downloads.md#week-5-advanced-class-features--magic-methods)
-
-### Lab Files
-
-- [:material-download: Line follower Webots world](https://claude.ai/files/line_following_world.wbt)
-- [:material-download: Robot controller template](https://claude.ai/files/line_follower_template.py)
 
 ### Further Reading
 
@@ -1334,4 +1107,4 @@ To reinforce your understanding and prepare for advanced topics:
 ---
 
 **Navigation:**  
-[← Week 4](https://claude.ai/chat/session-04.md) | [Learning Plan](https://claude.ai/revised-lap.md) | [Week 6 →](https://claude.ai/chat/session-06.md)
+[← Week 4](https:///session-04.md) | [Learning Plan](../course-overview/revised_lap.md) | [Week 6 →](https:///session-06.md)

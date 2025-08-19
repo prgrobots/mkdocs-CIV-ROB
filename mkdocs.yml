@@ -124,7 +124,7 @@ markdown_extensions:
 # Navigation structure
 nav:
   - Home: index.md
-  - Learning & Assessment Plan: revised-lap.md
+  - Learning & Assessment Plan: course-overview/revised_lap.md
   - Week 1 - Unit Testing & Binary Search:
     - Session 1: sessions/session-01.md
     - Resources: downloads.md
@@ -220,7 +220,4 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/yourusername
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/yourusername
-  version:
-    provider: mike
+
