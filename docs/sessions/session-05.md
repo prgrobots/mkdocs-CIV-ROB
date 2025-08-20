@@ -41,14 +41,14 @@ This session builds on the foundational OOP concepts from Session 4, introducing
 
 ## Pre-Session Preparation
 
-!!! tip "Setup Check" 
+!!! tip "Setup Check"
     Ensure your development environment is ready:
 
-    ```
+    
     - Python 3.9+ with Webots integration working
     - VS Code with Python
     - Completed Session 4 robot class exercises
-    ```
+    
 
 ---
 
