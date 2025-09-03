@@ -4,53 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "268ae75f9eec8c46",
+        "id": "456469e4bb5b546b",
         "type": "tabs",
         "children": [
           {
-            "id": "d64d5215716a79db",
+            "id": "6b4e518bd1f8a1a9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/sessions/session-04.md",
-                "mode": "source",
-                "source": false
+                "file": "Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "session-04"
-            }
-          },
-          {
-            "id": "5dd0184898c0882b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Docs generator.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Docs generator"
-            }
-          },
-          {
-            "id": "40f543786a62e89e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/sessions/session-05.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "session-05"
+              "title": "ReadMe"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -189,6 +160,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -197,30 +169,46 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "40f543786a62e89e",
+  "active": "84da7ef8235bce5b",
   "lastOpenFiles": [
-    "online editor links.txt",
-    "scratch.py",
-    "finshed student code session 5.md",
-    "Docs generator.md",
-    "docs/sessions/session-05.md",
-    "Robotics-Simulation-Labs-main/Lab2/ReadMe_lab2.md",
+    "site/assets/javascripts/glightbox.min.js",
+    "site/assets/stylesheets/glightbox.min.css",
+    "site/search/search_index.json",
+    "site/search",
+    "site/sessions/session-07/index.html",
+    "site/sessions/session-07",
+    "site/sessions/session-06/index.html",
+    "site/sessions/session-06",
+    "site/sessions/session-05_oop/index.html",
+    "site/sessions/session-05_oop",
+    "site/sessions/session-05/index.html",
+    "site/assets/images/favicon.png",
+    "site/images/windows_path_variable_python.png",
+    "site/images/windows_message.png",
+    "site/images/obstacle_avoidance.gif",
+    "site/images/line-following_state_machine.png",
+    "site/images/line-follower_video_screenshot.png",
+    "site/images/Webots_screenshot_with_e-puck.png",
+    "site/images/Webots_screenshot.png",
+    "site/images/Line_follower_robot_with_obstacles.png",
+    "site/images/BotStudio.png",
+    "docs/Robotics-Simulation-Labs-main/Lab4/ReadMe.md",
+    "docs/Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
+    "docs/sessions/session-07.md",
+    "Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
     "docs/sessions/session-04.md",
+    "docs/sessions/session-05.md",
+    "docs/course-overview/revised_lap.md",
+    "docs/sessions/session-06.md",
+    "Untitled.md",
+    "session-06-simplified.md",
+    "Docs generator.md",
+    "docs/templates/session-template.md",
+    "docs/sessions/session-05_oop.md",
+    "finshed student code session 5.md",
+    "Robotics-Simulation-Labs-main/Lab2/ReadMe_lab2.md",
     "docs/templates/README.md",
     "docs/downloads.md",
-    "docs/templates/session-template.md",
-    "Robotics-Simulation-Labs-main/Lab1/ReadMe.md",
-    "configs/session_05_config.json",
-    "configs",
-    "scripts/generate_session.py",
-    "scripts",
-    "docs/templates",
-    "docs/files/lidar_oop_clean.py",
-    "docs/files/lidar_functional_clean.py",
-    "docs/files/lidar_procedural_clean.py",
-    "docs/files/class_implementation_examples.py",
-    "docs/images/windows_path_variable_python.png",
-    "docs/images/windows_message.png",
-    "docs/images/Webots_screenshot.png"
+    "Robotics-Simulation-Labs-main/Lab1/ReadMe.md"
   ]
 }

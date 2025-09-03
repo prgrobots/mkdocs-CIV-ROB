@@ -927,7 +927,7 @@ Test your understanding of the Object-Oriented Programming concepts covered in t
         **Key difference**: Instance variables are unique to each object, class variables are shared by all objects.
 
 !!! question "Question 4: Why use OOP for robots?"
-    **Question**: Name two main benefits of using object-oriented programming for robotics instead of just writing simple functions.
+		**Question**: Name two main benefits of using object-oriented programming for robotics instead of just writing simple functions.
     
     ??? tip "Click to reveal answer"
         **Answer**: 

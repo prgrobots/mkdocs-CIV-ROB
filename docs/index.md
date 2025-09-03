@@ -17,7 +17,7 @@ Welcome to the **Robotics Programming Course** covering ICTPRG430 (Apply introdu
 **Platform:** Webots simulation with ROS integration for component demonstration  
 **Assessment:** Portfolio-based with pass/fail requirements
 
-## Quick Navigation
+## Quick Navigation 
 
 ### Course Information
 - **[Learning & Assessment Plan](./course-overview/revised_lap.md)** - Complete 18-week course schedule
