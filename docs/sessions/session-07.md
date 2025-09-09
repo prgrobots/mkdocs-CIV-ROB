@@ -112,6 +112,8 @@ For complex robot configurations, structured data formats provide **standardized
 
 ##### Why ROS2 Matters for Your Projects
 
+![type:video](https://www.youtube.com/watch?v=XQcqe1yLNgk) 
+
 - **Modularity**: Separate localization, navigation, and control into different nodes
 - **Configurability**: Change robot behavior without recompiling code
 - **Industry Standard**: Used in commercial robots worldwide

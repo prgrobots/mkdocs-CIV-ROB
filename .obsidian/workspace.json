@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
-                "mode": "preview",
+                "file": "docs/sessions/session-07.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "ReadMe"
+              "title": "session-07"
             }
           }
         ]
@@ -169,7 +169,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "84da7ef8235bce5b",
+  "active": "6b4e518bd1f8a1a9",
   "lastOpenFiles": [
     "site/assets/javascripts/glightbox.min.js",
     "site/assets/stylesheets/glightbox.min.css",
@@ -192,10 +192,10 @@
     "site/images/Webots_screenshot.png",
     "site/images/Line_follower_robot_with_obstacles.png",
     "site/images/BotStudio.png",
+    "Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
     "docs/Robotics-Simulation-Labs-main/Lab4/ReadMe.md",
     "docs/Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
     "docs/sessions/session-07.md",
-    "Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
     "docs/sessions/session-04.md",
     "docs/sessions/session-05.md",
     "docs/course-overview/revised_lap.md",

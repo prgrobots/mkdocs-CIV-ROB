@@ -63,6 +63,10 @@ theme:
 plugins:
   - search:
       lang: en
+
+  - mkdocs-video:
+
+
   - glightbox:  # Image lightbox
       touchNavigation: true
       loop: false
