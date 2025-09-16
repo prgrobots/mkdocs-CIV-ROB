@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "docs/sessions/session-08.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Docs generator.md",
+                "file": "docs/sessions/session-08.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Docs generator"
+              "title": "Backlinks for session-08"
             }
           },
           {
@@ -155,8 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -171,17 +170,17 @@
   },
   "active": "6b4e518bd1f8a1a9",
   "lastOpenFiles": [
-    "docs/sessions/session-07.md",
     "site/assets/javascripts/glightbox.min.js",
     "site/assets/stylesheets/glightbox.min.css",
     "site/search/search_index.json",
     "site/search",
+    "site/sessions/session-08/index.html",
+    "site/sessions/session-08",
     "site/sessions/session-07/index.html",
     "site/sessions/session-07",
     "site/sessions/session-06/index.html",
     "site/sessions/session-06",
     "site/sessions/session-05_oop/index.html",
-    "site/sessions/session-05_oop",
     "site/assets/images/favicon.png",
     "site/images/windows_path_variable_python.png",
     "site/images/windows_message.png",
@@ -192,18 +191,20 @@
     "site/images/Webots_screenshot.png",
     "site/images/Line_follower_robot_with_obstacles.png",
     "site/images/BotStudio.png",
+    "docs/sessions/session-06.md",
+    "docs/sessions/session-07.md",
+    "docs/sessions/session-05.md",
+    "docs/sessions/session-05_oop.md",
+    "docs/sessions/session-08.md",
     "Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
     "docs/Robotics-Simulation-Labs-main/Lab4/ReadMe.md",
     "docs/Robotics-Simulation-Labs-main/Lab3/ReadMe.md",
     "docs/sessions/session-04.md",
-    "docs/sessions/session-05.md",
     "docs/course-overview/revised_lap.md",
-    "docs/sessions/session-06.md",
     "Untitled.md",
     "session-06-simplified.md",
     "Docs generator.md",
     "docs/templates/session-template.md",
-    "docs/sessions/session-05_oop.md",
     "finshed student code session 5.md",
     "Robotics-Simulation-Labs-main/Lab2/ReadMe_lab2.md",
     "docs/templates/README.md",

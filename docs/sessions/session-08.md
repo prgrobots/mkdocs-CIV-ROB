@@ -6,7 +6,7 @@
 
 #### Session Introduction
 
-This session is dedicated to **completing the hands-on exercises and lab preparation work from Session 7**. You will finalize your configuration management systems, complete the ROS2 launch file implementations, and ensure your Labs 3-4 are properly refactored with the new configuration-driven approach. **All lab work and exercises from Session 7 must be completed by the end of this session**, as this forms the foundation for Portfolio Assessment 1.
+This session is dedicated to **completing the hands-on exercises and lab preparation work from Session 7**. You will finalize your configuration management systems, complete the ROS2 launch file implementations, and ensure your Labs 3-4 are properly refactored with the new configuration-driven approach. **All lab work and exercises from Session 7 must be completed by the end of this session**.
 
 The session focuses on **practical implementation and completion** of:
 - Configuration Manager system for Labs 3-4
@@ -14,7 +14,7 @@ The session focuses on **practical implementation and completion** of:
 - Configuration validation and error handling
 - Final preparation for Portfolio Assessment 1 (AT Task 1 - OOP Fundamentals)
 
-#### Learning Objectives
+## Learning Objectives
 
 By the end of this session, you will have:
 
@@ -26,7 +26,7 @@ By the end of this session, you will have:
 
 ---
 
-#### Session Structure
+## Session Structure
 
 1. **Lab Completion Phase** - Finishing Session 7 hands-on exercises
 2. **ROS2 Launch File Implementation** - Completing launch file templates
@@ -66,56 +66,27 @@ Ensure your factory classes are fully functional:
 
 Complete the launch file templates started in Session 7:
 
-- **Lab 3 Launch File**: Odometry localization with configurable parameters
-- **Lab 4 Launch File**: Go-to-goal navigation with PID configuration
+## **Lab 3 Launch File**:  [Odometry localization with configurable parameters](../Robotics-Simulation-Labs-main/Lab3/ReadMe.md)
+## **Lab 4 Launch File**: [Go-to-goal navigation with PID configuration](../../Robotics-Simulation-Labs-main/Lab4/ReadMe.md)
 
-##### 4. Configuration Validation System
 
-Implement the advanced configuration validation from Session 7's extension activity:
+## Session Workflow
 
-- Schema validation for configuration files
-- Error handling for missing or invalid parameters
-- Runtime validation before system initialization
-
----
-
-#### Portfolio Assessment 1 Preparation
-
-!!! important "Portfolio Assessment Due"
-    **Portfolio 1 Assessment: AT Task 1 - OOP Fundamentals** is due at the end of this session.
-    
-    Your completed work should demonstrate:
-    - ✅ **Class Design** - Proper encapsulation in ConfigurationManager
-    - ✅ **Factory Patterns** - Configuration-driven object creation
-    - ✅ **Polymorphism** - Multiple strategies accessible via configuration
-    - ✅ **File I/O Integration** - Robust configuration file handling
-    - ✅ **Error Handling** - Validation and exception management
-
----
-
-#### Session Workflow
-
-**Phase 1: Lab Completion (90 minutes)**
+**Phase 1: Lab Completion**
 - Review and complete unfinished Session 7 exercises
-- Implement missing methods in ConfigurationManager
-- Test factory pattern implementations
+    - Implement missing methods in ConfigurationManager
+    - Test factory pattern implementations
 
-**Phase 2: ROS2 Integration ** 
-- Finalize launch file templates
-- Test parameter passing from launch files
-- Validate XML syntax and structure
+**Phase 2: ROS2 Integration** 
+    - Finalize launch file templates
+    - Test parameter passing from launch files
+    - Validate XML syntax and structure
 
-**Phase 3: System Testing **
-- Implement configuration validation
-- Test error handling scenarios
-- Verify Labs 3-4 integration
+**Phase 3: System Testing**
+    - Implement configuration validation
+    - Test error handling scenarios
+    - Verify Labs 3-4 integration
 
-**Phase 4: Assessment Preparation **
-- Review Portfolio Assessment requirements
-- Final testing and validation
-- Documentation and submission preparation
-
----
 
 
 **Navigation:** ← Week 7 | Learning Plan | Week 9 →
