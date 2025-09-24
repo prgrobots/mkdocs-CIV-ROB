@@ -36,7 +36,7 @@ This session bridges the gap between **object-oriented programming theory and re
 
 
 
-!!! tip "Pre-Session Preparation"
+!!! tip "**Pre-Session Preparation**"
 	Ensure your development environment is ready: * **Python 3.9+** installed and configured. * **Review your Labs 3-4 implementations** - particularly the classes and interfaces you created.
 
 ---
