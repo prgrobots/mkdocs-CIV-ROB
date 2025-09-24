@@ -81,7 +81,7 @@ We begin by exploring the **PAL Robotics forks repository** to understand the so
 
 - **OS:** Ubuntu 24.04 LTS
 - **Pre-installed Tools:** ROS2, VSCode, Webots
-- **Location:** Network image (instructor will demonstrate access)
+- **Location:** VM is in the Lab Images network folder "X:\ROS2" 
 
 **Basic Setup Steps:**
 
@@ -106,6 +106,7 @@ We begin by exploring the **PAL Robotics forks repository** to understand the so
 # These commands will be demonstrated in class
 ros2 --version
 ros2 pkg list
+export ROS_DOMAIN_ID=<choose_your_domain_id>
 echo $ROS_DOMAIN_ID
 ```
 
@@ -157,40 +158,9 @@ The turtlesim tutorial will demonstrate:
 
 ---
 
-## Part 4: Webots-ROS2 Integration
+## Part 4: Package Management Deep Dive
 
-### 4.1 Webots ROS2 Package Installation
-
-**Reference Documentation:** https://github.com/cyberbotics/webots_ros2/wiki/Getting-Started
-
-### 4.2 Installation Process
-
-**Workspace Setup:**
-
-- Create ROS2 workspace directory structure
-- Clone webots_ros2 repository
-- Install package dependencies
-- Build using colcon build system
-
-**Key Steps Overview:**
-1. **Workspace Creation** - Establish src/ directory structure
-2. **Repository Cloning** - Download webots_ros2 source code
-3. **Dependency Resolution** - Install required packages
-4. **Colcon Build** - Compile and install packages
-5. **Environment Sourcing** - Update ROS2 environment
-
-### 4.3 Verification and Testing
-
-**Installation Verification:**
-- Check package installation success
-- Verify Webots can launch ROS2 nodes
-- Test basic robot simulation with ROS2 integration
-
----
-
-## Part 5: Package Management Deep Dive
-
-### 5.1 Installation Method Comparison
+### 4.1 Installation Method Comparison
 
 ![type:video](https://www.youtube.com/embed/vX3krP6JmOY)  
 
@@ -219,7 +189,7 @@ The turtlesim tutorial will demonstrate:
 - **Dependencies:** ROS2 package dependencies
 - **Use Case:** Building custom ROS2 packages, development workflow
 
-### 5.2 Package Ecosystem Importance
+### 4.2 Package Ecosystem Importance
 
 **For Python Development:**
 
@@ -242,7 +212,7 @@ The turtlesim tutorial will demonstrate:
 - **Scalability** - Add functionality without monolithic complexity
 - **Quality Assurance** - Tested, documented package implementations
 
-### 5.3 Package Management Best Practices
+### 4.3 Package Management Best Practices
 
 **Dependency Documentation:**
 
@@ -261,6 +231,37 @@ The turtlesim tutorial will demonstrate:
 - Track package manifests in version control
 - Document installation procedures
 - Automated dependency installation scripts
+
+---
+
+## Part 5: Webots-ROS2 Integration
+
+### 5.1 Webots ROS2 Package Installation
+
+**Reference Documentation:** https://github.com/cyberbotics/webots_ros2/wiki/Getting-Started
+
+### 5.2 Installation Process
+
+**Workspace Setup:**
+
+- Create ROS2 workspace directory structure
+- Clone webots_ros2 repository
+- Install package dependencies
+- Build using colcon build system
+
+**Key Steps Overview:**
+1. **Workspace Creation** - Establish src/ directory structure
+2. **Repository Cloning** - Download webots_ros2 source code
+3. **Dependency Resolution** - Install required packages
+4. **Colcon Build** - Compile and install packages
+5. **Environment Sourcing** - Update ROS2 environment
+
+### 5.3 Verification and Testing
+
+**Installation Verification:**
+- Check package installation success
+- Verify Webots can launch ROS2 nodes
+- Test basic robot simulation with ROS2 integration
 
 ---
 
