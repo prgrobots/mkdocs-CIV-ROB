@@ -295,7 +295,7 @@ ros2 pkg list | grep my_publisher_subscriber
 **Assignment Overview:**
 You will create a **publisher node** that publishes your student ID and a random number to a topic, then verify it works by subscribing to that topic.
 
-**Reference:** See the [ROS2 Publisher/Subscriber Assignment](../assignments/ros2-pubsub-assignment.md) page for complete details.
+**Reference:** See the [ROS2 Publisher/Subscriber Assignment](docs/sessions/PubSub-asignment.md) page for complete details.
 
 **Key Requirements:**
 - Create a publisher node in Python
