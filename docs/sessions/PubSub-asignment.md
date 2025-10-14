@@ -12,6 +12,9 @@ Example: If your student number is 12345678, use `STUD_5678`
 
 ### 1.1 Navigate to your workspace and create a package
 ```bash
+
+TODO - create workspace
+
 cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python student_publisher --dependencies rclpy std_msgs
 ```
