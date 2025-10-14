@@ -42,15 +42,11 @@ By the end of this session, you will have:
 
 ### 1.1 The Four Communication Methods
 
-**Services:**
 
-- **Pattern:** Synchronous request/response
-- **Direction:** One-to-one (client-server)
-- **Timing:** Blocking call, waits for response
-- **Use Case:** Short operations requiring confirmation
-- **Example:** Spawn new entity, change settings, query state
+## **Parameters:**
+![ROS2 service client-server diagram](../images/prams.webp){: style="display:block; margin-left:right; margin-right:auto; width:700px;" }
 
-**Parameters:**
+*image source: https://foxglove.dev/blog/how-to-use-ros2-parameters*
 
 - **Pattern:** Configuration value storage
 - **Direction:** Node-specific settings
@@ -58,7 +54,21 @@ By the end of this session, you will have:
 - **Use Case:** Runtime configuration without restart
 - **Example:** Background color, speed limits, sensor calibration
 
-**Actions:**
+## **Services:**
+
+![ROS2 service client-server diagram](../images/Service-SingleServiceClient.gif){: style="display:block; margin-left:right; margin-right:auto; width:700px;" }
+*image source: https://docs.ros.org/*
+
+- **Pattern:** Synchronous request/response
+- **Direction:** One-to-one (client-server)
+- **Timing:** Blocking call, waits for response
+- **Use Case:** Short operations requiring confirmation
+- **Example:** Spawn new entity, change settings, query state
+
+
+## **Actions:**
+![ROS2 service client-server diagram](../images/Action-SingleActionClient.gif){: style="display:block; margin-left:right; margin-right:auto; width:700px;" }
+*image source: https://docs.ros.org/*
 
 - **Pattern:** Goal-feedback-result with cancellation
 - **Direction:** One-to-one with continuous updates
@@ -66,21 +76,23 @@ By the end of this session, you will have:
 - **Use Case:** Long-running tasks needing progress monitoring
 - **Example:** Navigation to goal, pick-and-place, trajectory execution
 
-### 1.2 Choosing the Right Method
+!!! success "Key Insight" 
+   
+    ### 1.2 Choosing the Right Method
 
-**Decision Tree:**
+    **Decision Tree:**
 
-```
-Need to communicate?
-│
-├─ Continuous data stream? → Use TOPIC
-│
-├─ Configure node behavior? → Use PARAMETER
-│
-├─ Quick request/response? → Use SERVICE
-│
-└─ Long-running task with feedback? → Use ACTION
-```
+    ```
+        Need to communicate?
+        │
+        ├─ Continuous data stream? → Use TOPIC
+        │
+        ├─ Configure node behavior? → Use PARAMETER
+        │
+        ├─ Quick request/response? → Use SERVICE
+        │
+        └─ Long-running task with feedback? → Use ACTION
+    ```
 
 **Comparison Table:**
 
@@ -554,7 +566,7 @@ ros2 run package node --ros-args -p param:=value
 
 ---
 
-## Part 4: ROS2 Actions Tutorial (90 mins)
+## Part 4: ROS2 Actions Tutorial
 
 ### 4.1 Understanding ROS2 Actions
 
@@ -742,7 +754,7 @@ ros2 action send_goal --feedback <action_name> <type> <goal> # With feedback
 
 ---
 
-## Part 5: Integration and Practice (20 mins)
+## Part 5: Integration and Practice
 
 ### 5.1 Comparing All Communication Methods
 
