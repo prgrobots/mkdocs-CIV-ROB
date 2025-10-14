@@ -1,6 +1,6 @@
-# Session 12: ROS2 Services, Parameters & Actions
+# **Session 12:** ROS2 Services, Parameters & Actions
 
-**Week:** 12 **Element:** ICTPRG439 Element 2.3 **Duration:** 4 hours **Phase:** ROS2 Advanced Communication
+ **Phase:** ROS2 Advanced Communication
 
 ---
 
@@ -29,41 +29,37 @@ By the end of this session, you will have:
 
 ## Session Structure
 
-1. **Communication Paradigms Overview (20 mins)** - Topics vs Services vs Parameters vs Actions
-2. **ROS2 Services Tutorial (90 mins)** - Interactive service exploration
-3. **ROS2 Parameters Tutorial (45 mins)** - Runtime configuration management
-4. **Break (15 mins)**
-5. **ROS2 Actions Tutorial (90 mins)** - Goal-oriented task management
-6. **Integration and Practice (20 mins)** - Applying concepts and troubleshooting
+1. **Communication Paradigms Overview** - Topics vs Services vs Parameters vs Actions
+2. **ROS2 Services Tutorial** - Interactive service exploration
+3. **ROS2 Parameters Tutorial** - Runtime configuration management
+4. **ROS2 Actions Tutorial** - Goal-oriented task management
+6. **Integration and Practice** - Applying concepts and troubleshooting
+7. **Webots ROS2 Instalation** Not completed in session 5
 
 ---
 
-## Part 1: Communication Paradigms Overview (20 mins)
+## Part 1: Communication Paradigms Overview
 
 ### 1.1 The Four Communication Methods
 
-**Topics (Review from Session 11):**
-- **Pattern:** Asynchronous publisher/subscriber
-- **Direction:** One-to-many (broadcast)
-- **Timing:** Fire-and-forget, no response expected
-- **Use Case:** Continuous data streams (sensor data, status updates)
-- **Example:** Camera images, laser scans, odometry
+**Services:**
 
-**Services (This Session):**
 - **Pattern:** Synchronous request/response
 - **Direction:** One-to-one (client-server)
 - **Timing:** Blocking call, waits for response
 - **Use Case:** Short operations requiring confirmation
 - **Example:** Spawn new entity, change settings, query state
 
-**Parameters (This Session):**
+**Parameters:**
+
 - **Pattern:** Configuration value storage
 - **Direction:** Node-specific settings
 - **Timing:** Get/set operations
 - **Use Case:** Runtime configuration without restart
 - **Example:** Background color, speed limits, sensor calibration
 
-**Actions (This Session):**
+**Actions:**
+
 - **Pattern:** Goal-feedback-result with cancellation
 - **Direction:** One-to-one with continuous updates
 - **Timing:** Non-blocking goal submission, periodic feedback
@@ -132,7 +128,7 @@ Need to communicate?
 
 ---
 
-## Part 2: ROS2 Services Tutorial (90 mins)
+## Part 2: ROS2 Services Tutorial
 
 ### 2.1 Understanding ROS2 Services
 
@@ -798,6 +794,7 @@ ros2 action send_goal --feedback /turtle1/rotate_absolute \
 **When to Use Each Method:**
 
 **Use Topics When:**
+
 - ✅ Data needs continuous streaming
 - ✅ Multiple subscribers need same data
 - ✅ Low-latency communication critical
@@ -805,6 +802,7 @@ ros2 action send_goal --feedback /turtle1/rotate_absolute \
 - ❌ Don't need confirmation of receipt
 
 **Use Parameters When:**
+
 - ✅ Need to configure node behavior
 - ✅ Settings may change at runtime
 - ✅ Want to save/load configurations
@@ -812,6 +810,7 @@ ros2 action send_goal --feedback /turtle1/rotate_absolute \
 - ❌ Need real-time data streaming
 
 **Use Services When:**
+
 - ✅ Need immediate response
 - ✅ Operation completes quickly (< 1 second)
 - ✅ Request-response pattern appropriate
@@ -819,6 +818,7 @@ ros2 action send_goal --feedback /turtle1/rotate_absolute \
 - ❌ Operation might take significant time
 
 **Use Actions When:**
+
 - ✅ Task takes significant time (> 1 second)
 - ✅ Need progress feedback during execution
 - ✅ May need to cancel mid-operation
@@ -826,6 +826,25 @@ ros2 action send_goal --feedback /turtle1/rotate_absolute \
 - ❌ Need continuous data stream
 
 ---
+
+!!! example "**TASK** - Webots-ROS2 Integration"
+ 
+
+    ## **Webots ROS2 Package Installation**
+    Reference Documentation: https://github.com/cyberbotics/webots_ros2/wiki/Getting-Started
+
+    Installation Process
+    Workspace Setup:
+
+    Create ROS2 workspace directory structure
+    Clone webots_ros2 repository
+    Install package dependencies
+    Build using colcon build system
+    Key Steps Overview: 1. Workspace Creation - Establish src/ directory structure 2. Repository Cloning - Download webots_ros2 source code 3. Dependency Resolution - Install required packages 4. Colcon Build - Compile and install packages 5. Environment Sourcing - Update ROS2 environment
+
+    Verification and Testing
+    Installation Verification: - Check package installation success - Verify Webots can launch ROS2 nodes - Test basic robot simulation with ROS2 integration
+
 
 ## Session Summary
 
@@ -847,6 +866,7 @@ This session provided comprehensive coverage of ROS2 communication methods:
 - **CLI tools** are essential for testing and debugging all communication types
 
 ---
+
 
 ## Preparation for Next Session
 
